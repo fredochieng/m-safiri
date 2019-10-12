@@ -27,7 +27,7 @@
                         <th>Gender</th>
                         <th>DOB</th>
                         <th>Country</th>
-                        <th>Address</th>
+                        <th>Postal Code</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -38,13 +38,13 @@
                         <span class="hidden-xs">
                             <img src="/{{$item->driver_image}}" class="vehicle-circle" alt="Driver Image"></span>
                     </td>
-                    <td>{{ $item->name }}</td>
+                    <td>{{ $item->fullname }}</td>
                     <td>{{ $item->email }}</td>
-                    <td>{{ $item->phone_no }}</td>
+                    <td>{{ $item->mobile_number }}</td>
                     <td>{{ $item->gender }}</td>
                     <td>{{ $item->dob }}</td>
                     <td>{{ $item->country }}</td>
-                    <td>{{ $item->address }}</td>
+                    <td>{{ $item->postal_code }}</td>
                     <td> <a href="/driver/manage/&id={{$item->driver_id}}" class="btn btn-flat btn-info btn-sm"><i
                                 class="fa fa-eye"></i></a>
 

@@ -21,7 +21,7 @@
                                 tabindex="-1" aria-hidden="true">
                                 <option value="">Select Driver</option>
                                 @foreach ($unassigned_drivers as $item)
-                                <option value="{{$item->driver_id}}">{{$item->name}}</option>
+                                <option value="{{$item->driver_id}}">{{$item->fullname}}</option>
                                 @endforeach
                             </select>
                         </div>

@@ -69,6 +69,15 @@ class CompaniesController extends Controller
 
         $user->save();
 
+        $saved_user_id = $user->id;
+
+        $role_id = 2;
+        $company_role = array(
+            'role_id' => $role_id,
+            'model_id' => $saved_user_id
+        );
+        $save_user_role_data = DB::table('model_has_roles')->insert($company_role);
+
         Toastr::success('Company added successfully');
         return back();
     }

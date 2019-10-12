@@ -17,7 +17,7 @@
                             <div class="form-group">
                                 {!! Form::label('Driver Name *') !!}
                                 <div class="form-group">
-                                    {{Form::text('driver_name', $drivers->name, ['class' => 'form-control', 'id' => 'vehicle_name', 'required' ])}}
+                                    {{Form::text('driver_name', $drivers->fullname, ['class' => 'form-control', 'id' => 'vehicle_name', 'required' ])}}
                                 </div>
                             </div>
                         </div>
@@ -33,7 +33,7 @@
                             <div class="form-group">
                                 {!! Form::label('Phone Number *') !!}
                                 <div class="form-group">
-                                    {{Form::text('phone_no', $drivers->phone_no, ['class' => 'form-control', 'id' => 'vehicle_name', 'required' ])}}
+                                    {{Form::text('phone_no', $drivers->mobile_number, ['class' => 'form-control', 'id' => 'vehicle_name', 'required' ])}}
                                 </div>
                             </div>
                         </div>
@@ -85,9 +85,9 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                {!! Form::label('Zipcode') !!}
+                                {!! Form::label('Postal Code') !!}
                                 <div class="form-group">
-                                    {{Form::text('zipcode', $drivers->zipcode, ['class' => 'form-control', 'required' ])}}
+                                    {{Form::text('postal_code', $drivers->postal_code, ['class' => 'form-control', 'required' ])}}
                                 </div>
                             </div>
                         </div>
@@ -95,7 +95,7 @@
                             <div class="form-group">
                                 {!! Form::label('Address') !!}
                                 <div class="form-group">
-                                    {{Form::text('address', $drivers->address, ['class' => 'form-control', 'required' ])}}
+                                    {{Form::text('address', $drivers->postal_code, ['class' => 'form-control', 'required' ])}}
                                 </div>
                             </div>
                         </div>

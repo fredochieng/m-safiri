@@ -13,7 +13,7 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md-12">
-                        <p>Are you sure you want to delete <span style="font-weight:bold">{{$item->name}}</span>?
+                        <p>Are you sure you want to delete <span style="font-weight:bold">{{$item->fullname}}</span>?
                         </p>
                     </div>
                 </div>

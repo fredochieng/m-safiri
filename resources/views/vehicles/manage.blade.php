@@ -65,8 +65,8 @@
 
                         <tr>
                             <td><b>Driver</b></td>
-                            @if ($vehicles->name != '')
-                            <td><span style="font-weight:bold">{{ $vehicles->name}}</span></td>
+                            @if ($vehicles->fullname != '')
+                            <td><span style="font-weight:bold">{{ $vehicles->fullname}}</span></td>
                             @else
                             <td><span style="font-weight:bold">Unassigned</span></td>
                             @endif

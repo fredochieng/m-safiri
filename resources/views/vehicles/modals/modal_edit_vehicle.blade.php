@@ -44,7 +44,7 @@
                         <div class="form-group">
                             {!! Form::label('Driver') !!}
                             <div class="form-group">
-                                {{Form::text('driver', $vehicles->name, ['class' => 'form-control', 'readonly' ])}}
+                                {{Form::text('driver', $vehicles->fullname, ['class' => 'form-control', 'readonly' ])}}
                             </div>
                         </div>
                     </div>

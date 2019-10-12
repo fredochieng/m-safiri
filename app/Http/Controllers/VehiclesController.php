@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Drivers\DriverData;
 use App\Models\Drivers\Driver;
 use App\Models\Vehicles\Vehicle;
 use App\Models\VehicleTypes\VehicleType;
@@ -111,10 +112,12 @@ class VehiclesController extends Controller
 
         // Get drivers who are not assigned to any vehicle
 
-        $data['unassigned_drivers'] = Driver::getUnassignedDrivers()
+        $data['unassigned_drivers'] = DriverData::getUnassignedDrivers()
             ->where('vehicle_driver_id', '=', '')
-            ->where('driver_status', '=', 'Active');
+            ->where('status', '=', 'active')
+            ->where('approved', '=', 'yes');
 
+        //dd($data['unassigned_drivers']);
         return view('vehicles.manage')->with($data);
     }
 

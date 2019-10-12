@@ -43,7 +43,7 @@
                                     <span class="input-group-addon">
                                         <i class="fa fa-calendar"></i>
                                     </span>
-                                    {{Form::text('dob', null, ['class' => 'form-control date_selector', 'id' => 'date_selector', 'readonly', 'required' ])}}
+                                    {{Form::text('dob', null, ['class' => 'form-control date_selector', 'id' => 'date_selector', 'required',  'readonly' ])}}
                                 </div>
                             </div>
                         </div>
@@ -84,46 +84,46 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                {!! Form::label('Zipcode') !!}
+                                {!! Form::label('Postal Code') !!}
                                 <div class="form-group">
-                                    {{Form::text('zipcode', null, ['class' => 'form-control', 'required' ])}}
+                                    {{Form::text('postal_code', null, ['class' => 'form-control', 'required' ])}}
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        {{-- <div class="col-md-4">
                             <div class="form-group">
                                 {!! Form::label('Address') !!}
                                 <div class="form-group">
                                     {{Form::text('address', null, ['class' => 'form-control', 'required' ])}}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            {{Form::label('Upload Driver Image *')}}
-                            <div class="form-group">
-                                {{Form::file('driver_image',['class'=>'form-control', 'required'])}}
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            {{Form::label('Upload Vehicle Document *')}}
-                            <div class="form-group">
-                                {{Form::file('driver_license',['class'=>'form-control', 'required'])}}
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            {{Form::label('Upload Address Proof *')}}
-                            <div class="form-group">
-                                {{Form::file('address_proof',['class'=>'form-control', 'required'])}}
-                            </div>
-                        </div>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> Add New Driver</button>
+            </div> --}}
+            <div class="col-md-4">
+                {{Form::label('Upload Driver Image *')}}
+                <div class="form-group">
+                    {{Form::file('driver_image',['class'=>'form-control', 'required'])}}
                 </div>
-                {!! Form::close() !!}
             </div>
-            <!-- /.modal-content -->
+            <div class="col-md-4">
+                {{Form::label('Upload Vehicle Document *')}}
+                <div class="form-group">
+                    {{Form::file('driver_license',['class'=>'form-control', 'required'])}}
+                </div>
+            </div>
+            <div class="col-md-4">
+                {{Form::label('Upload Address Proof *')}}
+                <div class="form-group">
+                    {{Form::file('address_proof',['class'=>'form-control', 'required'])}}
+                </div>
+            </div>
         </div>
     </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> Add New Driver</button>
+    </div>
+    {!! Form::close() !!}
+</div>
+<!-- /.modal-content -->
+</div>
+</div>
