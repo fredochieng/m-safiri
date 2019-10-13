@@ -147,6 +147,12 @@ return [
             'icon_color' => 'yellow',
         ],
         [
+            'text' => 'Mechanics',
+            'url'  => 'mechanics',
+            'icon' => 'fas fa-fw fa-car',
+            'icon_color' => 'yellow',
+        ],
+        [
             'text'    => 'Routes',
             'icon'    => 'fas fa-fw fa-map',
             'icon_color' => '#f56954',
@@ -164,6 +170,24 @@ return [
                     'icon_color' => 'green',
                 ],
             ],
+        ],
+        [
+            'text' => 'Locations',
+            'url'  => '/locations',
+            'icon' => 'fas fa-fw fa-plus-circle',
+            'icon_color' => 'green',
+        ],
+        [
+            'text' => 'Trip',
+            'url'  => '/trips',
+            'icon' => 'fas fa-fw fa-comments',
+            'icon_color' => 'yellow',
+        ],
+        [
+            'text' => 'Trip Price',
+            'url'  => '/tripPrices',
+            'icon' => 'fas fa-fw fa-plus-circle',
+            'icon_color' => 'yellow',
         ],
         [
             'text' => 'Reviews',

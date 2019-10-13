@@ -35,3 +35,13 @@ Route::any('/driver/manage/&id={id}', 'DriverController@manageDriver');
 Route::resource('/routes', 'RoutesController');
 
 Route::any('/routes/create', 'RoutesController@create');
+
+
+//Routes for trips
+Route::resource('/tripPrices', 'TripPriceController');
+
+//Routes for locations
+Route::resource('/locations', 'LocationsController');
+
+//Routes for mechanics
+Route::resource('/mechanics', 'MechanicController');
