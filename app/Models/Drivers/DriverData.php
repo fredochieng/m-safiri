@@ -3,6 +3,7 @@
 namespace App\Models\Drivers;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 use DB;
 
 class DriverData extends Model
@@ -11,6 +12,20 @@ class DriverData extends Model
 
     public static function getDrivers()
     {
+        $user = Auth::user();
+        $company_id = Auth::user()->company_id;
+
+        ~$user_role = $user->getRoleNames()->first();
+        if ($user_role == "Admin") {
+            $compare_field = "tbl_driverdata.id";
+            $compare_operator = ">=";
+            $compare_value = 1;
+        } elseif ($user_role == "Company") {
+            $compare_field = "tbl_driverdata.company_id";
+            $compare_operator = "=";
+            $compare_value = $company_id;
+        }
+
         $drivers = DB::table('tbl_driverdata')
             ->select(
                 DB::raw('tbl_driverdata.*'),
@@ -26,6 +41,7 @@ class DriverData extends Model
             ->leftJoin('tbl_driverdetails', 'tbl_driverdata.id', '=', 'tbl_driverdetails.driver_id')
             ->leftJoin('countries', 'tbl_driverdetails.country_id', '=', 'countries.id')
             ->leftJoin('cities', 'tbl_driverdetails.city_id', '=', 'cities.id')
+            ->where($compare_field, $compare_operator, $compare_value)
             ->get();
 
         return $drivers;

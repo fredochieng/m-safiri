@@ -141,48 +141,10 @@ return [
             'icon_color' => 'fuchsia',
         ],
         [
-            'text'    => 'Vehicles',
-            'icon'    => 'fas fa-fw fa-car',
-            'icon_color' => 'warning',
-            'submenu' => [
-                [
-                    'text' => 'All Vehicles',
-                    'url'  => 'vehicles/all',
-                    'icon' => 'fas fa-fw fa-bus',
-                    'icon_color' => 'purple'
-                ],
-                [
-                    'text' => 'Buses',
-                    'url'  => 'vehicles/buses',
-                    'icon' => 'fas fa-fw fa-bus',
-                    'icon_color' => 'aqua'
-                ]
-            ],
-        ],
-        [
-            'text'    => 'Drivers',
-            'icon'    => 'fas fa-fw fa-user',
-            'icon_color' => 'purple',
-            'submenu' => [
-                [
-                    'text' => 'All Drivers',
-                    'url'  => '/drivers',
-                    'icon' => 'fas fa-fw fa-bus',
-                    'icon_color' => 'success'
-                ],
-                [
-                    'text' => 'Active',
-                    'url'  => 'drivers/active',
-                    'icon' => 'fas fa-fw fa-user',
-                    'icon_color' => 'purple'
-                ],
-                [
-                    'text' => 'In Active',
-                    'url'  => 'drivers/inactive',
-                    'icon' => 'fas fa-fw fa-user',
-                    'icon_color' => 'yellow'
-                ]
-            ],
+            'text' => 'Vehicles',
+            'url'  => 'vehicles/all',
+            'icon' => 'fas fa-fw fa-car',
+            'icon_color' => 'yellow',
         ],
         [
             'text'    => 'Routes',
@@ -204,6 +166,12 @@ return [
             ],
         ],
         [
+            'text' => 'Reviews',
+            'url'  => 'reviews',
+            'icon' => 'fas fa-fw fa-comments',
+            'icon_color' => 'yellow',
+        ],
+        [
             'text'    => 'Reports',
             'icon'    => 'fas fa-fw fa-list',
             'icon_color' => 'red',
@@ -222,10 +190,22 @@ return [
             'icon_color' => 'green',
             'submenu' => [
                 [
-                    'text' => 'Driver',
-                    'url'  => 'drivers',
-                    'icon' => 'fas fa-fw fa-bus',
-                    'icon_color' => 'success'
+                    'text' => 'Drivers',
+                    'url'  => '/drivers',
+                    'icon' => 'fas fa-fw fa-user',
+                    'icon_color' => 'fuchsia'
+                ],
+                [
+                    'text' => 'Mechanics',
+                    'url'  => '/drivers',
+                    'icon' => 'fas fa-fw fa-user',
+                    'icon_color' => 'purple'
+                ],
+                [
+                    'text' => 'Users',
+                    'url'  => 'users',
+                    'icon' => 'fas fa-fw fa-users',
+                    'icon_color' => 'yellow'
                 ],
             ],
         ],

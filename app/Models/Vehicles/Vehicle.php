@@ -17,19 +17,18 @@ class Vehicle extends Model
     public static function getVehicles()
     {
         $user = Auth::user();
-        $country_id = Auth::user()->company_id;
+        $company_id = Auth::user()->company_id;
+
 
         ~$user_role = $user->getRoleNames()->first();
         if ($user_role == "Admin") {
-            dd('fred');
             $compare_field = "vehicles.id";
             $compare_operator = ">=";
             $compare_value = 1;
         } elseif ($user_role == "Company") {
-            dd('Fred');
             $compare_field = "vehicles.company_id";
-            $compare_operator = ">=";
-            $compare_value = $country_id;
+            $compare_operator = "=";
+            $compare_value = $company_id;
         }
 
         $vehicles = DB::table('vehicles')
@@ -48,8 +47,6 @@ class Vehicle extends Model
             ->leftJoin('tbl_driverdata', 'vehicles.driver_id', '=', 'tbl_driverdata.id')
             ->where($compare_field, $compare_operator, $compare_value)
             ->get();
-
-        dd($vehicles);
 
         return $vehicles;
     }

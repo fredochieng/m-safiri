@@ -40,7 +40,15 @@
                     <td>{{ $item->name }}</td>
                     <td>{{ $item->contact_number }}</td>
                     <td>{{ $item->email }}</td>
-                    <td>{{ $item->status_id }}</td>
+
+                    @if ($item->status == 'active')
+
+                    <td><span class="badge bg-green">{{ $item->status}}</span>
+                    </td>
+                    @else
+                    <td><span class="badge bg-yellow">{{ $item->status}}</span>
+                    </td>
+                    @endif
                     <td>{{ $item->company_created_at }}</td>
                     <td> <a href="/company/manage/&id={{$item->company_id}}" class="btn btn-flat btn-info btn-sm"><i
                                 class="fa fa-eye"></i></a>

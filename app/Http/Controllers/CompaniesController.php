@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Kamaln7\Toastr\Facades\Toastr;
+use DB;
 
 // use Kamaln7\Toastr\Facades\Toastr;
 
@@ -55,7 +56,6 @@ class CompaniesController extends Controller
         $company->address = $address;
         $company->zipcode = $zipcode;
         $company->contact_number = $contact_number;
-        $company->status_id = 1;
         $company->created_by = Auth::id();
         $company->save();
 
@@ -74,12 +74,21 @@ class CompaniesController extends Controller
         $role_id = 2;
         $company_role = array(
             'role_id' => $role_id,
-            'model_id' => $saved_user_id
+            'model_id' => $saved_user_id,
+            'model_type' => 'App\User'
         );
         $save_user_role_data = DB::table('model_has_roles')->insert($company_role);
 
         Toastr::success('Company added successfully');
         return back();
+    }
+
+    public function manageCompany($company_id)
+    {
+        $data['companies'] = Company::getCompanies()->where('company_id', $company_id)->first();
+        //dd($data['companies']);
+
+        return view('companies.manage')->with($data);
     }
 
     /**

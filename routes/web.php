@@ -22,6 +22,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // Routes for companies
 Route::resource('companies', 'CompaniesController');
+Route::any('/company/manage/&id={id}', 'CompaniesController@manageCompany');
 
 //Routes for vehicles
 Route::resource('/vehicles/all', 'VehiclesController');
