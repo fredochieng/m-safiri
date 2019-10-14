@@ -49,6 +49,19 @@ class DriverData extends Model
 
     public static function getUnassignedDrivers()
     {
+        $user = Auth::user();
+        $company_id = Auth::user()->company_id;
+
+        ~$user_role = $user->getRoleNames()->first();
+        if ($user_role == "Admin") {
+            $compare_field = "tbl_driverdata.id";
+            $compare_operator = ">=";
+            $compare_value = 1;
+        } elseif ($user_role == "Company") {
+            $compare_field = "tbl_driverdata.company_id";
+            $compare_operator = "=";
+            $compare_value = $company_id;
+        }
         $drivers = DB::table('tbl_driverdata')
             ->select(
                 DB::raw('tbl_driverdata.id as driver_id'),
@@ -58,6 +71,7 @@ class DriverData extends Model
                 DB::raw('vehicles.driver_id as vehicle_driver_id')
             )
             ->join('vehicles', 'vehicles.driver_id', '=', 'tbl_driverdata.id', 'left outer')
+            ->where($compare_field, $compare_operator, $compare_value)
             ->get();
 
         return $drivers;

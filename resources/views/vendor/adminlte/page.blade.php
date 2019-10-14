@@ -165,7 +165,7 @@
         <div class="pull-right hidden-xs">
             <b>Turyde</b>
         </div>
-        <strong>Copyright © <?php echo date('Y') ?></php> <a href="https://adminlte.io">M-Safiri Turyde
+        <strong>Copyright © <?php echo date('Y') ?></php> <a href="https://adminlte.io">Turyde
             </a>.</strong> All
         rights
         reserved.
