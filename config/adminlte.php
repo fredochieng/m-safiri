@@ -149,44 +149,45 @@ return [
         [
             'text' => 'Mechanics',
             'url'  => 'mechanics',
-            'icon' => 'fas fa-fw fa-car',
+            'icon' => 'fas fa fa-cog',
             'icon_color' => 'yellow',
         ],
         [
             'text'    => 'Routes',
-            'icon'    => 'fas fa-fw fa-map',
+            'url'  => 'routes',
+            'icon'    => 'fas fa-fw fa-road',
             'icon_color' => '#f56954',
-            'submenu' => [
-                [
-                    'text' => 'All Routes',
-                    'url'  => 'routes',
-                    'icon' => 'fas fa-fw fa-map-signs',
-                    'icon_color' => 'blue',
-                ],
-                [
-                    'text' => 'Add Route',
-                    'url'  => '/routes/create',
-                    'icon' => 'fas fa-fw fa-plus-circle',
-                    'icon_color' => 'green',
-                ],
-            ],
+            // 'submenu' => [
+            //     [
+            //         'text' => 'All Routes',
+            //         'url'  => 'routes',
+            //         'icon' => 'fas fa-fw fa-map-signs',
+            //         'icon_color' => 'blue',
+            //     ],
+            //     [
+            //         'text' => 'Add Route',
+            //         'url'  => '/routes/create',
+            //         'icon' => 'fas fa-fw fa-plus-circle',
+            //         'icon_color' => 'green',
+            //     ],
+            // ],
         ],
         [
             'text' => 'Locations',
             'url'  => '/locations',
-            'icon' => 'fas fa-fw fa-plus-circle',
+            'icon' => 'fas fa-fw fa-map-pin',
             'icon_color' => 'green',
         ],
         [
             'text' => 'Trip',
             'url'  => '/trips',
-            'icon' => 'fas fa-fw fa-comments',
+            'icon' => 'fas fa-fw fa-map-signs',
             'icon_color' => 'yellow',
         ],
         [
             'text' => 'Trip Price',
             'url'  => '/tripPrices',
-            'icon' => 'fas fa-fw fa-plus-circle',
+            'icon' => 'fas fa-fw fa-credit-card',
             'icon_color' => 'yellow',
         ],
         [

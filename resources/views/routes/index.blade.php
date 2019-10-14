@@ -10,7 +10,10 @@
     <div class="box-header with-border">
         <h3 class="box-title">All Routes</h3>
         <div class="pull-right">
-            <a href="#" class="btn btn-primary"><i class="fa fa-plus"></i> Add Route</a>
+        <button type="button" class="btn btn-primary" onclick="window.location='{{ url("/routes/create") }}'">
+            <i class="fa fa-plus"></i>
+            Add Route
+        </button>
         </div>
     </div>
 

@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Trip Price | M-Safiri Turyde')
+@section('title', 'Mechanic | M-Safiri Turyde')
 
 @section('content_header')
 @stop
@@ -10,8 +10,7 @@
     <div class="box-header with-border">
         <h3 class="box-title">Mechanics</h3>
         <div class="pull-right">
-            <a href="#" data-target="#modal_add_price" data-toggle="modal" class="btn btn-primary"
-                data-backdrop="static" data-keyboard="false"><i class="fa fa-plus"></i> New Mechanic</a>
+            <button type="button" onclick="window.location='{{ url("users/index") }}'">Add Mechanic</button>
         </div>
     </div>
 
