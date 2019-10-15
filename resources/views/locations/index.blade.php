@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Companies | M-Safiri Turyde')
+@section('title', 'Locations | Turyde')
 
 @section('content_header')
 @stop

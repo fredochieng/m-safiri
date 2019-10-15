@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Mechanic | Turyde')
+@section('title', 'Trips | Turyde')
 
 @section('content_header')
 @stop
@@ -8,7 +8,7 @@
 @section('content')
 <div class="box box-primary">
     <div class="box-header with-border">
-        <h3 class="box-title">Mechanics</h3>
+        <h3 class="box-title">Trip History</h3>
         {{-- <div class="pull-right">
             <button type="button" onclick="window.location='{{ url("users/index") }}'">Add Mechanic</button>
         </div> --}}
@@ -20,45 +20,45 @@
                 <thead>
                     <tr>
 
-                        <th>Full Name</th>
-                        <th>Email</th>
-                        <th>Street</th>
-                        <th>City</th>
-                        <th>Date</th>
-                        <th>status</th>
+                        <th>Trip ID</th>
+                        <th>Driver Name</th>
+                        <th>P/Location</th>
+                        <th>D/Location</th>
+                        <th>Trip Start</th>
+                        <th>Trip End</th>
+                        <th>Travel Time</th>
+                        <th>Payment</th>
                         <th>Action</th>
+
                     </tr>
                 </thead>
 
-                @foreach ($mechanics as $mechanic)
+                @foreach ($trips as $trip)
                 <tr>
 
-                    <td>{{ $mechanic->full_name }}</td>
-                    <td>{{ $mechanic->email_id }}</td>
-                    <td>{{ $mechanic->street }}</td>
-                    <td>{{ $mechanic->city }}</td>
-                    <td>{{ $mechanic->date_time }}</td>
-                    <td>{{ $mechanic->status }}</td>
+                    <td>{{ $trip->trip_id }}</td>
+                    <td>{{ $trip->driver_name }}</td>
+                    <td>{{ $trip->p_location }}</td>
+                    <td>{{ $trip->d_location }}</td>
+                    <td>{{ $trip->trip_start }}</td>
+                    <td>{{ $trip->trip_end }}</td>
+                    <td>{{ $trip->travel_time }}</td>
+                    <td>{{ $trip->payment }}</td>
                     <td>
                         <a class="btn btn-info btn-sm" title="Edit Price" href="#" data-toggle="modal"
-                        data-target="#modal_edit_price_{{$mechanic->mechanic_id}}" data-backdrop="static"
-                        data-keyboard="false"><i class="fa fa-eye"></i></a>
-
-                        <a class="btn btn-danger btn-sm" title="Delete Price" href="#" data-toggle="modal"
-                            data-target="#modal_delete_price_{{$mechanic->mechanic_id}}" data-backdrop="static"
-                            data-keyboard="false"><i class="fa fa-trash"></i></a>
+                        data-target="#modal_edit_price_{{$trip->trip_id}}" data-backdrop="static"
+                        data-keyboard="false"><i class="fa fa-eye">View Invoice</i></a>
 
                     </td>
                 </tr>
-                {{-- @include('tripPrices.modals.modal_delete_price') --}}
+
                 @endforeach
             </table>
         </div>
     </div>
     <!-- /.box-body -->
 </div>
-{{-- @include('tripPrices.modals.modal_add_price')
-@include('tripPrices.modals.modal_edit_price') --}}
+
 @stop
 @section('css')
 <link rel="stylesheet" href="/css/custom.css">

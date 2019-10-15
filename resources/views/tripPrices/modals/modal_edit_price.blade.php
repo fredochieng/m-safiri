@@ -38,7 +38,7 @@
                             {{Form::label('Location To ')}}
                             <div class="form-group">
                                 <select class="form-control select2" name="location_to" required style="width: 100%;"tabindex="-1" aria-hidden="true">
-                                    <option value="$item->id">{{$item->dest_address}}</option>
+                                    <option value="{{$item->id}}">{{$item->dest_address}}</option>
                                     @foreach ($locations as $location)
                                     <option value="{{$location->id}}">{{$location->address}}</option>
                                     @endforeach

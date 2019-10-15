@@ -45,3 +45,9 @@ Route::resource('/locations', 'LocationsController');
 
 //Routes for mechanics
 Route::resource('/mechanics', 'MechanicController');
+
+//Routes for trips
+Route::resource('/trips', 'TripController');
+
+//Routes for review
+Route::any('/reviews', 'ReviewController@index');

@@ -49,6 +49,7 @@
 
                     </td>
                 </tr>
+                @include('tripPrices.modals.modal_edit_price')
                 @include('tripPrices.modals.modal_delete_price')
                 @endforeach
             </table>
@@ -57,7 +58,7 @@
     <!-- /.box-body -->
 </div>
 @include('tripPrices.modals.modal_add_price')
-@include('tripPrices.modals.modal_edit_price')
+
 @stop
 @section('css')
 <link rel="stylesheet" href="/css/custom.css">

@@ -179,20 +179,28 @@ return [
             'icon_color' => 'green',
         ],
         [
-            'text' => 'Trip',
-            'url'  => '/trips',
-            'icon' => 'fas fa-fw fa-map-signs',
-            'icon_color' => 'yellow',
+            'text'    => 'Trips',
+            'icon'    => 'fas fa-fw fa-list',
+            'icon_color' => 'red',
+            'submenu' => [
+                [
+                    'text' => 'Trip',
+                    'url'  => '/trips',
+                    'icon' => 'fas fa-fw fa-map-signs',
+                    'icon_color' => 'yellow',
+                ],
+                [
+                    'text' => 'Trip Price',
+                    'url'  => '/tripPrices',
+                    'icon' => 'fas fa-fw fa-credit-card',
+                    'icon_color' => 'yellow',
+                ],
+            ],
         ],
-        [
-            'text' => 'Trip Price',
-            'url'  => '/tripPrices',
-            'icon' => 'fas fa-fw fa-credit-card',
-            'icon_color' => 'yellow',
-        ],
+
         [
             'text' => 'Reviews',
-            'url'  => 'reviews',
+            'url'  => '/reviews',
             'icon' => 'fas fa-fw fa-comments',
             'icon_color' => 'yellow',
         ],
