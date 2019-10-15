@@ -18,4 +18,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('drivers', 'ApiControllers\DriverController');
-//Route::get('drivers/{id}', 'ApiControllers\DriverController');
+Route::get('drivers/{id}', 'ApiControllers\DriverController@show');

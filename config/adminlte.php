@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'title' => 'M-Safiri Turyde',
+    'title' => 'Turyde',
 
     'title_prefix' => '',
 
@@ -30,9 +30,9 @@ return [
     |
     */
 
-    'logo' => '<b>M-Safiri</b> Turyde',
+    'logo' => '<b></b> Turyde',
 
-    'logo_mini' => '<b>M</b>Turyde',
+    'logo_mini' => '<b>Turyde</b>',
 
     /*
     |--------------------------------------------------------------------------
@@ -146,31 +146,17 @@ return [
             'icon' => 'fas fa-fw fa-car',
             'icon_color' => 'yellow',
         ],
-        [
-            'text' => 'Mechanics',
-            'url'  => 'mechanics',
-            'icon' => 'fas fa fa-cog',
-            'icon_color' => 'yellow',
-        ],
+        // [
+        //     'text' => 'Mechanics',
+        //     'url'  => 'mechanics',
+        //     'icon' => 'fas fa fa-cog',
+        //     'icon_color' => 'yellow',
+        // ],
         [
             'text'    => 'Routes',
             'url'  => 'routes',
             'icon'    => 'fas fa-fw fa-road',
             'icon_color' => '#f56954',
-            // 'submenu' => [
-            //     [
-            //         'text' => 'All Routes',
-            //         'url'  => 'routes',
-            //         'icon' => 'fas fa-fw fa-map-signs',
-            //         'icon_color' => 'blue',
-            //     ],
-            //     [
-            //         'text' => 'Add Route',
-            //         'url'  => '/routes/create',
-            //         'icon' => 'fas fa-fw fa-plus-circle',
-            //         'icon_color' => 'green',
-            //     ],
-            // ],
         ],
         [
             'text' => 'Locations',
@@ -230,7 +216,7 @@ return [
                 ],
                 [
                     'text' => 'Mechanics',
-                    'url'  => '/drivers',
+                    'url'  => 'mechanics',
                     'icon' => 'fas fa-fw fa-user',
                     'icon_color' => 'purple'
                 ],

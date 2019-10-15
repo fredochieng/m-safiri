@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Companies | M-Safiri Turyde')
+@section('title', 'Companies | Turyde')
 
 @section('content_header')
 @stop
@@ -12,10 +12,7 @@
         <div class="pull-right">
             <a href="#" data-target="#modal_add_company" data-toggle="modal" class="btn btn-primary"
                 data-backdrop="static" data-keyboard="false"><i class="fa fa-plus"></i> New Company </a>
-        </div>
-    </div>
-
-    <div class="box-body">
+        </div </div> <div class="box-body">
         <div class="table-responsive">
             <table id="records" class="table table-hover">
                 <thead>
