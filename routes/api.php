@@ -17,5 +17,28 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+// Driver API
 Route::apiResource('drivers', 'ApiControllers\DriverController');
+Route::post('driver/create', 'ApiControllers\DriverController@store');
+Route::post('driver/login', 'ApiControllers\DriverController@loginDriver');
 Route::get('drivers/{id}', 'ApiControllers\DriverController@show');
+Route::post('driver/{id}/update', 'ApiControllers\DriverController@update');
+Route::any('driver/approval', 'ApiControllers\DriverController@getDriverapproval');
+Route::any('driver/profile', 'ApiControllers\DriverController@getDriverprofile');
+Route::any('driver/update_photo', 'ApiControllers\DriverController@updateDriverPhoto');
+Route::any('driver/update_vehicle_profile', 'ApiControllers\DriverController@updateVehicleProfile');
+Route::any('driver/change_password', 'ApiControllers\DriverController@updateDriverPassword');
+Route::any('driver/check_sent_code', 'ApiControllers\DriverController@checkSentCode');
+Route::post('driver/add_vehicle', 'ApiControllers\DriverController@addVehicle');
+Route::any('driver/get_vehicle', 'ApiControllers\DriverController@getVehicle');
+Route::post('driver/update_vehicle', 'ApiControllers\DriverController@updateVehicle');
+Route::post('driver/delete_vehicle', 'ApiControllers\DriverController@deleteVehicle');
+Route::post('driver/add_bank_details', 'ApiControllers\DriverController@addBankDetails');
+Route::any('driver/get_bank_details', 'ApiControllers\DriverController@getBankDetails');
+Route::post('driver/update_bank_details', 'ApiControllers\DriverController@updateBankDetails');
+Route::get('get_countries', 'ApiControllers\DriverController@getCountries');
+Route::get('get_cities', 'ApiControllers\DriverController@getCities');
+Route::post('driver/add_trip', 'ApiControllers\DriverController@addTrip');
+Route::get('driver/get_trip', 'ApiControllers\DriverController@getTrip');
+Route::post('driver/delete_trip', 'ApiControllers\DriverController@deleteTrip');
+Route::post('driver/update_driver_location', 'ApiControllers\DriverController@updateDriverLocation');
