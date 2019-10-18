@@ -341,8 +341,45 @@ class UserModelController extends Controller
             }
         }
 
+        // get user driver trips
+        public function get_driverTrips(Request $request)
+        {
+            $user_id = $request->input('user_id');
+			$from_title = $request->input('from_title');
+			$to_title = $request->input('to_title');
+			$get_date = $request->input('get_date');
+			$seats = $request->input('seats');
+			$rating = $request->input('rating');
+			$price = $request->input('price');
+            $by_date = $request->input('by_date');
+
+            $ResultAddress = UserModel::getdriverTrips($from_title,$to_title,$get_date,$seats,$rating,$price);
+            if( $ResultAddress>=1){
+                foreach ($ResultAddress as $getValue) {
+                     $driver_id = $getValue->driver_id;
+                     $trip_id = $getValue->trip_id;
+
+                     $resultGetcountseats = UserModel::check_availabeltrips($trip_id);
+                     if($resultGetcountseats>=1){
+                        $countBookedseats1 = $resultGetcountseats;
+                    }else{
+                        $countBookedseats1 = 0;
+                    }
+
+                }
+            }
+
+            // NOT COMPLETE
+        }
+
+       // get driver informations
+        public function get_singleTrip($id)
+        {
+            $resultGetsingletrip = UserModel::check_availabeltrips($id);
+        }
+
         //add review
-        public function user_addReview()
+        public function user_addReview(Request $request)
 	    {
             $user_id = $request->input('user_id');
             $trip_id = $request->input('trip_id');
@@ -485,7 +522,11 @@ class UserModelController extends Controller
                 return responce()->json($json, 400);
             }
 
+        }
 
+        // passanger cancel trip
+	    public function passanger_canceltrip()
+	    {
 
         }
 
