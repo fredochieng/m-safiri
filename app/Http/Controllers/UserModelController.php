@@ -359,12 +359,9 @@ class UserModelController extends Controller
                      $driver_id = $getValue->driver_id;
                      $trip_id = $getValue->trip_id;
 
-                     $resultGetcountseats = UserModel::check_availabeltrips($trip_id);
-                     if($resultGetcountseats>=1){
-                        $countBookedseats1 = $resultGetcountseats;
-                    }else{
-                        $countBookedseats1 = 0;
-                    }
+                     $bookedSeats = UserModel::check_availabeltrips($trip_id);
+
+
 
                 }
             }
