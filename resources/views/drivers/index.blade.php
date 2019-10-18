@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Drivers | M-Safiri Turyde')
+@section('title', 'Drivers | Turyde')
 
 @section('content_header')
 @stop

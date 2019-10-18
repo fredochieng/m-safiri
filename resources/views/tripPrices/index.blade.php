@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Trip Price | M-Safiri Turyde')
+@section('title', 'Trip Price | Turyde')
 
 @section('content_header')
 @stop
@@ -40,8 +40,8 @@
 
                     <td>
                         <a class="btn btn-info btn-sm" title="Edit Price" href="#" data-toggle="modal"
-                        data-target="#modal_edit_price_{{$item->price_id}}" data-backdrop="static"
-                        data-keyboard="false"><i class="fa fa-eye"></i></a>
+                            data-target="#modal_edit_price_{{$item->price_id}}" data-backdrop="static"
+                            data-keyboard="false"><i class="fa fa-eye"></i></a>
 
                         <a class="btn btn-danger btn-sm" title="Delete Price" href="#" data-toggle="modal"
                             data-target="#modal_delete_price_{{$item->price_id}}" data-backdrop="static"

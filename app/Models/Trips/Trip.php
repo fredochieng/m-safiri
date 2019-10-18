@@ -24,4 +24,20 @@ class Trip extends Model
             ->get();
         return $trips;
     }
+
+    public static function getDriverTrips()
+    {
+        $trips = DB::table('tbl_driver_setlocation')
+            ->select(
+                DB::raw('tbl_driver_setlocation.*'),
+                DB::raw('tbl_driver_setlocation.id as location_id'),
+                DB::raw('tbl_driver_setlocation.status as trip_status'),
+                DB::raw('tbl_driverdata.*'),
+                DB::raw('tbl_driverdata.id as driverid'),
+                DB::raw('tbl_driverdata.status as driver_status')
+            )
+            ->leftJoin('tbl_driverdata', 'tbl_driver_setlocation.driver_id', '=', 'tbl_driverdata.id')
+            ->get();
+        return $trips;
+    }
 }

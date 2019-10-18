@@ -32,6 +32,7 @@ class HomeController extends Controller
         $data['unassigned_drivers'] = HomeModel::getUnassignedDrivers();
         $data['latest_drivers'] = HomeModel::getLatestDrivers();
         $data['latest_vehicles'] = HomeModel::getLatestVehicles();
+        $data['total_mechanics'] = HomeModel::getTotalMechanics();
         // dd($data['latest_drivers']);
 
         Toastr::success('Welcome to M-Safiri Turyde');

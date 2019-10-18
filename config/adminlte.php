@@ -196,8 +196,8 @@ return [
             'icon_color' => 'red',
             'submenu' => [
                 [
-                    'text' => 'Driver Payment Reports',
-                    'url'  => 'drivers',
+                    'text' => 'Cancelled Trips Reports',
+                    'url'  => '/reports/cancelled_reports',
                     'icon' => 'fas fa-fw fa-bus',
                     'icon_color' => 'success'
                 ],
