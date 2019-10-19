@@ -54,3 +54,6 @@ Route::any('/reviews', 'ReviewController@index');
 
 // Routes for reports
 Route::any('/reports/cancelled_reports', 'ReportsController@cancelledTrips');
+
+// Routes for api
+Route::any('/apis', 'APIController@index');

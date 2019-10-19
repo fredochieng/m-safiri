@@ -239,11 +239,11 @@ class DriverController extends Controller
         $now = Carbon::now('Africa/Nairobi');
         $delete_driver = DriverData::where("id", $driver_id)->delete();
         $delete_driver = DriverDetails::where("driver_id", $driver_id)->delete();
-        $delete_driver = DriverDocuments::where("driver_id", $driver_id)->delete();
+        //$delete_driver = DriverDocuments::where("driver_id", $driver_id)->delete();
 
         Log::critical("DRIVER OF ID " . $driver_id .  " DELETED BY USER ID: " . Auth::id() . " NAME " . Auth::user()->name . " AT " . $now);
 
-        Toastr::success('Vehicle deleted successfully');
+        Toastr::success('Driver deleted successfully');
         return back();
     }
 }
