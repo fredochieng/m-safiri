@@ -5,9 +5,9 @@
 @section('content_header')
 <h1><strong>#{{$companies->company_name}}</strong>
     <p class="pull-right">
-        <a href="#" data-toggle="modal" data-target="#modal_edit_company_{{ $companies->company_id }}"
-            class="btn btn-primary btn-sm btn-flat"><i class="fas fa-fw fa-plus-circle"></i>
-            EDIT COMPANY</a>
+        {{-- <a href="#" data-toggle="modal" data-target="#modal_edit_company_{{ $companies->company_id }}"
+        class="btn btn-primary btn-sm btn-flat"><i class="fas fa-fw fa-plus-circle"></i>
+        EDIT COMPANY</a> --}}
     </p>
 </h1>
 @stop

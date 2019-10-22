@@ -20,6 +20,12 @@ class HomeModel extends Model
         return $total_drivers;
     }
 
+    public static function getTotalMechanics()
+    {
+        $mechanics = DB::table('tbl_mechanics')->count();
+        return $mechanics;
+    }
+
     // Get total companies
     public static function getTotalCompanies()
     {

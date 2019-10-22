@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard | M-Safiri Turyde')
+@section('title', 'Dashboard | Turyde')
 
 @section('content_header')
 <h1>Dashboard</h1>
@@ -123,7 +123,7 @@
         <!-- small box -->
         <div class="small-box bg-green">
             <div class="inner">
-                <h3>{{ $total_companies }}</h3>
+                <h3>{{ $total_mechanics }}</h3>
                 <p>Total Mechanics</p>
             </div>
             <div class="icon">

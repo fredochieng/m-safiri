@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Routes | M-Safiri Turyde')
+@section('title', 'Routes | Turyde')
 
 @section('content_header')
 @stop
@@ -10,10 +10,10 @@
     <div class="box-header with-border">
         <h3 class="box-title">All Routes</h3>
         <div class="pull-right">
-        <button type="button" class="btn btn-primary" onclick="window.location='{{ url("/routes/create") }}'">
-            <i class="fa fa-plus"></i>
-            Add Route
-        </button>
+            <button type="button" class="btn btn-primary" onclick="window.location='{{ url("/routes/create") }}'">
+                <i class="fa fa-plus"></i>
+                Add Route
+            </button>
         </div>
     </div>
 
@@ -43,15 +43,15 @@
                         <td>{{$item->driver_name}}</td>
                         <td>{{$item->created_at}}</td>
                         <td>
-                             <a class="btn btn-info btn-sm" title="Edit Route" href="#" data-toggle="modal"
-                                    data-target="#modal_edit_route_{{$item->route_id}}" data-backdrop="static"
-                                    data-keyboard="false"><i class="fa fa-eye"></i>
+                            <a class="btn btn-info btn-sm" title="Edit Route" href="#" data-toggle="modal"
+                                data-target="#modal_edit_route_{{$item->route_id}}" data-backdrop="static"
+                                data-keyboard="false"><i class="fa fa-eye"></i>
                             </a>
 
-                              <a class="btn btn-danger btn-sm" title="Delete Route" href="#" data-toggle="modal"
-                                    data-target="#modal_delete_route_{{$item->route_id}}" data-backdrop="static"
-                                    data-keyboard="false"><i class="fa fa-trash"></i>
-                              </a>
+                            <a class="btn btn-danger btn-sm" title="Delete Route" href="#" data-toggle="modal"
+                                data-target="#modal_delete_route_{{$item->route_id}}" data-backdrop="static"
+                                data-keyboard="false"><i class="fa fa-trash"></i>
+                            </a>
 
                         </td>
                     </tr>
