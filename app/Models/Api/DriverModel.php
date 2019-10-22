@@ -110,4 +110,42 @@ class DriverModel extends Model
 
         return $countries;
     }
+
+    public static function get_driver_vehicle()
+    {
+        $seats = DB::table('vehicles')
+            ->select(
+                DB::raw('vehicles.seats'),
+            )
+            ->get();
+
+        return $seats;
+    }
+
+    public static function getdriverRating($driver_id)
+    {
+        $query = DB::table('tbl_user_trips as t')
+                ->select(
+
+                    DB::raw('avg(t.rating) as avg_rating')
+                   )
+                ->where('driver_id', '=', $driver_id)
+                ->get();
+
+        return $query;
+
+    }
+
+    public static function calculate_triptime($id)
+    {
+        $query = DB::table('tbl_driver_setlocation as t')
+                ->selectRaw(
+                   ' SEC_TO_TIME(SUM(UNIX_TIMESTAMP("t.end_datetime") - UNIX_TIMESTAMP("t.datetime")))'
+                   )
+                ->where('id', '=', $id)
+                ->get();
+
+        return $query;
+
+    }
 }

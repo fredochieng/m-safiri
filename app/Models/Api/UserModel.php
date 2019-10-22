@@ -25,20 +25,12 @@ class UserModel extends Model
     }
 
     // user login
-    public static function loginUserdata($user_email, $password)
+    public static function loginUserdata()
     {
-        $userLogin = DB::table('tbl_userdata')
-                   ->where([['user_emai', '=', $user_email], ['password', '=', $password]])
-                   ->get();
 
-        $res = $userLogin->toArray();
+        $user =  DB::table('tbl_userdata')->get();
 
-        if ($userLogin->count() > 0){
-            return $res;
-        }
-        else{
-            return false;
-        }
+        return $user;
     }
 
     public static function getUserdata($user_id)
@@ -101,7 +93,7 @@ class UserModel extends Model
      // serch driver trips
      public static function getdriverTrips($from_title,$to_title,$get_date,$seats,$rating,$price)
      {
-        $driverTrips = DB::table('driver_setlocation AS t1')
+        $driverTrips = DB::table('tbl_driver_setlocation AS t1')
         ->select(
             DB::raw('t1.*'),
             DB::raw('t2.fullname'),
@@ -119,16 +111,15 @@ class UserModel extends Model
         ->join('tbl_driverdetails as t3', 't1.driver_id', '=', 't3.driver_id')
         ->join('vehicles as t4', 't1.driver_id', '=', 't4.driver_id',)
         ->where([
-            ['ti.from_title', '=', $from_title],
-            ['ti.to_title', '=', $to_title],
-            ['ti.datetime', '=', $get_title],
-            ['ti.status', '=', 'pending'],
-            ['ti.trip_price', '!=', ''],
-            ['ti.trip_price', '=', '0'],
-            ['t2.driver_status', '=', 'active'],
+            ['t1.from_title', '=', $from_title],
+            ['t1.to_title', '=', $to_title],
+            ['t1.datetime', '=', $get_date],
+            ['t1.status', '=', 'pending'],
+            ['t1.trip_price', '!=', ''],
+            ['t1.trip_price', '=', '0'],
+            ['t2.status', '=', 'active'],
             ['t2.online_status', '=', 'active'],
-            $subQueryRatting,
-            $subQueryPrice
+
         ])
         ->get();
 
@@ -141,7 +132,7 @@ class UserModel extends Model
      {
         $availableTrips = DB::table('tbl_user_trips')
                      ->where([['trip_id', '=', $trip_id],['status', '=', 'booked']])
-                     ->count();
+                     ->get();
 
         return $availableTrips;
 
@@ -150,7 +141,7 @@ class UserModel extends Model
      public static function getsingleTrip($id)
      {
 
-        $singleTrip = DB::table('driver_setlocation AS t1')
+        $singleTrip = DB::table('tbl_driver_setlocation AS t1')
                     ->select(
                         DB::raw('t1.*'),
                         DB::raw('t2.fullname'),
@@ -167,14 +158,47 @@ class UserModel extends Model
                     ->leftJoin('tbl_driverdata as t2', 't1.driver_id', '=', 't2.id')
                     ->join('tbl_driverdetails as t3', 't1.driver_id', '=', 't3.driver_id')
                     ->join('vehicles as t4', 't1.driver_id', '=', 't4.driver_id',)
-                    ->join('tbl_user_trips as t5', 't1.id', '=', 't4.trip_id',)
+                    ->join('tbl_user_trips as t5', 't1.id', '=', 't5.trip_id',)
                     ->where('t1.id', '=', $id)
                     ->get();
 
-    return $singleTrip;
+        return $singleTrip;
      }
 
+     public static function getAllfromlist()
+     {
+            $allTrips = DB::table('tbl_driver_setlocation AS t1')
+                        ->select('t1.*')
+                        //->group_by('from_title')
+                        ->where('status', '=' ,'pending')
+                        ->get();
+            return $allTrips;
 
+     }
+
+      // get current trips
+      public static function getAlltolist($from_title)
+      {
+        $allTrips = DB::table('tbl_driver_setlocation AS t1')
+                ->select('t1.*')
+                //->group_by('from_title')
+                ->where([['from_title', '=' ,$from_title],['status', '=' ,'pending']])
+                ->get();
+       return $allTrips;
+
+      }
+
+       // get current trips
+       public static function check_jointrip($trip_id,$user_id)
+       {
+            $joinTrips = DB::table('tbl_user_trips AS t1')
+                        ->select('t1.*')
+                        //->group_by('from_title')
+                        ->where([['trip_id', '=' ,$trip_id],['user_id', '=' ,$user_id],['status', '!=' ,'cancel'],['status', '!=' ,'0']])
+                        ->get();
+            return $joinTrips;
+
+       }
 
 
 }
