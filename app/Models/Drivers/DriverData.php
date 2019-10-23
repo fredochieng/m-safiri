@@ -37,10 +37,13 @@ class DriverData extends Model
                 DB::raw('countries.country'),
                 DB::raw('cities.id as city_id'),
                 DB::raw('cities.city')
+                // DB::raw('vehicles.driver_id'),
+                // DB::raw('vehicles.vehicle_number')
             )
             ->leftJoin('tbl_driverdetails', 'tbl_driverdata.id', '=', 'tbl_driverdetails.driver_id')
             ->leftJoin('countries', 'tbl_driverdetails.country_id', '=', 'countries.id')
             ->leftJoin('cities', 'tbl_driverdetails.city_id', '=', 'cities.id')
+            //->join('vehicles', 'vehicles.driver_id', '=', 'tbl_driverdata.id', 'left outer')
             ->where($compare_field, $compare_operator, $compare_value)
             ->get();
 

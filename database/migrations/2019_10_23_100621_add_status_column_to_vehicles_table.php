@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLocationsTable extends Migration
+class AddStatusColumnToVehiclesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateLocationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('locations', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('address');
-            $table->string('latitude');
-            $table->string('longitude');
-            $table->timestamps();
+        Schema::table('vehicles', function (Blueprint $table) {
+            $table->string('status')->default('pending')->after('seats');
         });
     }
 
@@ -29,6 +25,8 @@ class CreateLocationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('locations');
+        Schema::table('vehicles', function (Blueprint $table) {
+            $table->dropColumn('status');
+        });
     }
 }

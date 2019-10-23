@@ -8,7 +8,7 @@
         <a href="#" data-toggle="modal" data-target="#modal_edit_vehicle_{{ $vehicles->vehicle_id }}"
             class="btn btn-primary btn-sm btn-flat"><i class="fas fa-fw fa-plus-circle"></i>
             EDIT VEHICLE</a>
-        @if ($vehicles->driver_id == '')
+        @if ($vehicles->driver_id == '' && $vehicles->status == 'approved')
         <a href="#" data-toggle="modal" data-target="#modal_assign_driver_{{ $vehicles->vehicle_id }}"
             class="btn btn-info btn-sm btn-flat"><i class="fas fa-fw fa-plus-circle"></i>
             ASSIGN DRIVER</a>
@@ -40,7 +40,7 @@
                         </tr>
                         <tr>
                             <td><b>Vehicle Status</b></td>
-                            <td><span class="badge bg-yellow">Pending</span>
+                            <td><span class="badge bg-yellow">{{ $vehicles->status }}</span>
                             </td>
                         </tr>
 

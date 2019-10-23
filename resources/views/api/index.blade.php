@@ -279,7 +279,7 @@
             </p>_____________
             <p>Getdriver API : </p>
             <p>
-                {{ $app_url }}/api/drivers/{id}</p>------Status:Done-------
+                {{ $app_url }}/api/drivers/get_driver</p>------Status:Done-------
             <p>
                 parameteres : driver_id
             </p>_____________
@@ -297,10 +297,11 @@
             </p>_____________
             <p>Update driver API : </p>
             <p>
-                {{ $app_url }}/api/driver/{id}/update</p>------Status:Done-------
+                {{ $app_url }}/api/driver/update</p>------Status:Done-------
             <p>
-                parameteres : driver_id , gender ,dob ,street ,city ,state ,postal_code ,country ,mobile_number ,status
-                , approvel(yes,no) , online_status (yes,no)
+                parameteres : driver_id , gender ,dob ,country_id ,city_id ,postal_code ,mobile_number,licence_file,
+                address_file
+                photo
             </p>_____________
             <p>driver photo API : </p>
             <p>
@@ -331,8 +332,8 @@
                 {{ $app_url }}/api/driver/add_vehicle</p>
             ------Status:Done-------
             <p>
-                parameteres : driver_id ,vehicle_name, vehicle_type , vehicle_number , seats , vehicle_photo[ ] ,
-                numberplate_photo[ ]
+                parameteres : driver_id ,vehicle_name, type_id , vehicle_number , seats , vehicle_picture ,
+                vehicle_document
             </p>_____________
             <p>driver add vehicle API : </p>
             <p>
@@ -345,19 +346,19 @@
                 {{ $app_url }}/api/driver/add_bank_details</p>------Status:Done-------
             <p>
                 parameteres :
-                driver_id,bank_name,bank_payee,bank_account,bank_ifsc,street1,street2,city,state,postal_code,country,birthday[2018-01-10]
+                driver_id,bank_id,bank_payee,bank_account,bank_ifsc
             </p>_____________
             <p>driver get bank detail API : </p>
             <p>
-                {{ $app_url }}/api/api/driver/get_bank_details</p>------Status:Done-------
+                {{ $app_url }}/api/driver/get_bank_details</p>------Status:Done-------
             <p>
-                parameteres : bank_id,driver_id
+                parameteres : driver_id
             </p>_____________
             <p>driver update bank detail API : </p>
             <p>
                 {{ $app_url }}/api/driver/update_bank_details</p>------Status:Done-------
             <p>
-                parameteres : bank_id,driver_id
+                parameteres : driver_id
             </p>_____________
             <p>driver Set trip location API : </p>
             <p>
@@ -382,7 +383,7 @@
             <p>
                 {{ $app_url }}/api/driver/delete_trip</p>------Status:Done-------
             <p>
-                parameteres : id
+                parameteres : trip_id
             </p>_____________
             <p>Get all driver current / past /upcoming API : </p>
             <p>
@@ -395,7 +396,7 @@
             <p>
                 {{ $app_url }}/api/driver/get_trip</p>------Status:Done-------
             <p>
-                parameteres : id
+                parameteres : trip_id
             </p>_____________
             <p>Get vehicle data API : </p>
             <p>

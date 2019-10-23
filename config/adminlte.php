@@ -145,18 +145,14 @@ return [
             'url'  => 'vehicles/all',
             'icon' => 'fas fa-fw fa-car',
             'icon_color' => 'yellow',
+            'can' => 'vehicles.manage'
         ],
-        // [
-        //     'text' => 'Mechanics',
-        //     'url'  => 'mechanics',
-        //     'icon' => 'fas fa fa-cog',
-        //     'icon_color' => 'yellow',
-        // ],
         [
             'text'    => 'Routes',
             'url'  => 'routes',
             'icon'    => 'fas fa-fw fa-road',
             'icon_color' => '#f56954',
+            'can' => 'vehicles.manage'
         ],
         [
             'text' => 'Locations',

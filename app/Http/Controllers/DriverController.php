@@ -129,7 +129,7 @@ class DriverController extends Controller
         $data['countries'] = Country::getCountries();
         $data['cities'] = City::getCities();
         $data['drivers'] = DriverData::getDrivers()->where('driver_id', $driver_id)->first();
-        // dd($data['drivers']);
+        //    dd($data['drivers']);
 
         return view('drivers.manage')->with($data);
     }
@@ -225,7 +225,7 @@ class DriverController extends Controller
         Log::info("DRIVER OF ID " . $driver_id .  " UPDATED BY USER ID: " . Auth::id() . " NAME " . Auth::user()->name . " AT " . $now);
         Toastr::success('Driver updated successfully');
         return back();
-        dd($driver_id);
+        // dd($driver_id);
     }
 
     /**

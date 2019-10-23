@@ -39,7 +39,11 @@
                                 class="badge bg-green">{{ $drivers->online_status }}</span></strong></td>
                     @endif
                     <td style=""><strong>APPROVED: </strong> {{$drivers->approved}}</td>
-                    <td style=""><strong>DRIVER VEHICLE: </strong> KCT 657F</td>
+                    {{-- @if ($drivers->vehicle_number !='')
+                    <td style=""><strong>DRIVER VEHICLE: </strong> {{ $drivers->vehicle_number }}</td>
+                    @else
+                    <td style=""><strong>DRIVER VEHICLE: </strong> No Vehicle</td>
+                    @endif --}}
                 </tr>
                 <tr>
                     <td style=""><strong>DRIVER IMAGE: </strong> <a href="/{{ $drivers->driver_image }}"
@@ -83,106 +87,6 @@
                         <th>Trip Status</th>
                     </tr>
                 </thead>
-                <tr>
-                    <td>43563</td>
-                    <td>KCT 654F</td>
-                    <td>Audi</td>
-                    <td>Westlands</td>
-                    <td>Lavington</td>
-                    <td>2019-10-09 10:00AM</td>
-                    <td>2019-10-09 11:00AM</td>
-                    <td>Finished</td>
-                </tr>
-                <tr>
-                    <td>43563</td>
-                    <td>KCT 654F</td>
-                    <td>Audi</td>
-                    <td>Westlands</td>
-                    <td>Lavington</td>
-                    <td>2019-10-09 10:00AM</td>
-                    <td>2019-10-09 11:00AM</td>
-                    <td>Finished</td>
-                </tr>
-                <tr>
-                    <td>43563</td>
-                    <td>KCT 654F</td>
-                    <td>Audi</td>
-                    <td>Westlands</td>
-                    <td>Lavington</td>
-                    <td>2019-10-09 10:00AM</td>
-                    <td>2019-10-09 11:00AM</td>
-                    <td>Finished</td>
-                </tr>
-                <tr>
-                    <td>43563</td>
-                    <td>KCT 654F</td>
-                    <td>Audi</td>
-                    <td>Westlands</td>
-                    <td>Lavington</td>
-                    <td>2019-10-09 10:00AM</td>
-                    <td>2019-10-09 11:00AM</td>
-                    <td>Finished</td>
-                </tr>
-                <tr>
-                    <td>43563</td>
-                    <td>KCT 654F</td>
-                    <td>Audi</td>
-                    <td>Westlands</td>
-                    <td>Lavington</td>
-                    <td>2019-10-09 10:00AM</td>
-                    <td>2019-10-09 11:00AM</td>
-                    <td>Finished</td>
-                </tr>
-                <tr>
-                    <td>43563</td>
-                    <td>KCT 654F</td>
-                    <td>Audi</td>
-                    <td>Westlands</td>
-                    <td>Lavington</td>
-                    <td>2019-10-09 10:00AM</td>
-                    <td>2019-10-09 11:00AM</td>
-                    <td>Finished</td>
-                </tr>
-                <tr>
-                    <td>43563</td>
-                    <td>KCT 654F</td>
-                    <td>Audi</td>
-                    <td>Westlands</td>
-                    <td>Lavington</td>
-                    <td>2019-10-09 10:00AM</td>
-                    <td>2019-10-09 11:00AM</td>
-                    <td>Finished</td>
-                </tr>
-                <tr>
-                    <td>43563</td>
-                    <td>KCT 654F</td>
-                    <td>Audi</td>
-                    <td>Westlands</td>
-                    <td>Lavington</td>
-                    <td>2019-10-09 10:00AM</td>
-                    <td>2019-10-09 11:00AM</td>
-                    <td>Finished</td>
-                </tr>
-                <tr>
-                    <td>43563</td>
-                    <td>KCT 654F</td>
-                    <td>Audi</td>
-                    <td>Westlands</td>
-                    <td>Lavington</td>
-                    <td>2019-10-09 10:00AM</td>
-                    <td>2019-10-09 11:00AM</td>
-                    <td>Finished</td>
-                </tr>
-                <tr>
-                    <td>43563</td>
-                    <td>KCT 654F</td>
-                    <td>Audi</td>
-                    <td>Westlands</td>
-                    <td>Lavington</td>
-                    <td>2019-10-09 10:00AM</td>
-                    <td>2019-10-09 11:00AM</td>
-                    <td>Finished</td>
-                </tr>
             </table>
         </div>
     </div>
