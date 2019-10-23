@@ -13,15 +13,12 @@ class UserModelController extends Controller
 
     public function register(Request $request)
     {
-<<<<<<< HEAD
-=======
         $method = $_SERVER['REQUEST_METHOD'];
         if ($method != 'POST') {
 
             $message = array("status" => 400, "message" => "Bad request");
             return response()->json($message, 200);
         } else {
->>>>>>> a4fdbb727e54588510065bf9bc542c38ebb2f5c0
 
             $user_email = $request->input('user_email');
             $password = bcrypt($request->input('password'));
@@ -39,15 +36,9 @@ class UserModelController extends Controller
                 $user_image = 'no_profile';
             }
 
-<<<<<<< HEAD
-            $resultGetdata=UserModel::checkUserdata($user_email);
-            if(!empty($resultGetdata)){
-                $json = array("status" =>0, "message" => "Data already exist");
-=======
             $resultGetdata = UserModel::checkUserdata($user_email);
             if ($resultGetdata >= 1) {
                 $json = array("status" => 0, "message" => "Data already exist");
->>>>>>> a4fdbb727e54588510065bf9bc542c38ebb2f5c0
                 return response()->json($json, 200);
             } else {
                 if ($user_email == "") {
@@ -67,7 +58,6 @@ class UserModelController extends Controller
 
 
                     $userModel->save();
-<<<<<<< HEAD
                      $result[] = array(
                          'user_email' => $user_email);
                      $json = array("status" => 1, "message"=>"success", "data"=>$result);
@@ -75,21 +65,13 @@ class UserModelController extends Controller
                     }
 				}
 
-           return json_encode($json);
-=======
 
-                    $json = array("status" => 1, "message" => "success");
-                    return response()->json($json, 200);
-                }
-            }
->>>>>>> a4fdbb727e54588510065bf9bc542c38ebb2f5c0
         }
-        return json_encode($json);
+
     }
 
     //Login
 
-<<<<<<< HEAD
         public function login(Request $request)
         {
 
@@ -112,65 +94,12 @@ class UserModelController extends Controller
                     return response()->json($json, 400);
                 }
 
-=======
-    public function login(Request $request)
-    {
-        $method = $_SERVER['REQUEST_METHOD'];
-        if ($method != 'POST') {
-
-            $message = array("status" => 400, "message" => "Bad request");
-            return response()->json($message, 200);
-        } else {
-
-            $user_email = $request->input('user_email');
-            $password = md5($request->input('password'));
-
-            $resultGetdata = UserModel::loginUserdata($user_email, $password);
-            if ($resultGetdata >= 1) {
-
-                $json = array("status" => 0, "message" => "Data already exist");
-                return response()->json($json, 200);
-            } else {
-                $json = array("status" => 0, "message" => "Wrong Username or password");
-                return response()->json($json, 200);
-            }
->>>>>>> a4fdbb727e54588510065bf9bc542c38ebb2f5c0
         }
-        return json_encode($json);
-    }
 
-    //fblogin
-    // public function SocialLogin()
-    // {
-    //     $method = $_SERVER['REQUEST_METHOD'];
-    //     if ($method != 'POST') {
-
-    //         $message = array("status" => 400, "message" => "Bad request");
-    //         return response()->json($message, 200);
-
-    //     }else{
-
-    //         $login_type = $request->input('login_type');
-    //         $user_email = $request->input('user_email');
-    //         $fname = $request->input('fname');
-    //         $lname = $request->input('lname');
-    //         $device_id = $request->input('device_id');
-    //         $device_token = $request->input('device_token');
-    //         $token = $request->input('token');
-
-    //         $resultGetdata=UserModel::checkUserdata($user_email);
-    //         if($resultGetdata>=1){
-
-    //         }
-
-    //     }
-
-    // }
 
     // get user informations
     public function getuser($id)
     {
-
         $resultGetuser = UserModel::getUserdata($id);
         if ($resultGetuser >= 1) {
             $data['result'] = $resultGetuser;
@@ -181,30 +110,12 @@ class UserModelController extends Controller
             return response()->json($json, 200);
         }
 
-        return json_encode($json);
     }
 
     // update user profile
     public function updateprofile(Request $request, $user_id)
     {
 
-<<<<<<< HEAD
-            if($update_user_details){
-                $result[] = array(
-                    'user_id'=>$user_id,
-                    'fname' => $fname,
-                    'lname' => $lname,
-                    'user_email'=>$user_email,
-                    'photo' => $user_image,
-                    'mobile_number' => $mobile_number,
-                   );
-                $json = array("status" => 201, "message"=>"Data has been updated", "data" => $result);
-                return response()->json($json, 200);
-            }else{
-                $json = array("status" => 0, "message" => "Something went wrong");
-                return response()->json($json, 200);
-            }
-=======
         $fname =  $request->input('fname');
         $lname =  $request->input('lname');
         $user_email =  $request->input('user_email');
@@ -222,7 +133,6 @@ class UserModelController extends Controller
         } else {
             $user_image = UserModel::where('id', $user_id)->first();
             $user_image = $user_image->photo;
->>>>>>> a4fdbb727e54588510065bf9bc542c38ebb2f5c0
         }
 
         $update_user_details = UserModel::where("id", $user_id)->update([
@@ -246,15 +156,6 @@ class UserModelController extends Controller
         }
     }
 
-<<<<<<< HEAD
-        //change password
-        public function user_changepassword(Request $request, $id)
-        {
-            $old_password = md5($request->input('old_password'));
-            $password = md5($request->input('password'));
-
-            $checkUser=UserModel::userChangePass($id, $old_password);
-=======
     // sendcode
     public function user_check_sentcode(Request $request)
     {
@@ -273,7 +174,6 @@ class UserModelController extends Controller
             return response()->json($json, 200);
         }
     }
->>>>>>> a4fdbb727e54588510065bf9bc542c38ebb2f5c0
 
     //change password
     public function user_changepassword(Request $request, $id)
@@ -283,18 +183,11 @@ class UserModelController extends Controller
 
         $checkUser = UserModel::userChangePass($id, $old_password);
 
-<<<<<<< HEAD
-                ]);
-                $result[] = array('user_id'=>$id,'password' => $password);
-                $json = array("status" => 201, "message"=>"success", "data" => $result);
-                return response()->json( $json);
-=======
         if ($checkUser >= 1) {
 
             $update_user_password = UserModel::where("id", $id)->update([
                 'password' =>  $password,
                 'old_password' =>  $old_password,
->>>>>>> a4fdbb727e54588510065bf9bc542c38ebb2f5c0
 
             ]);
 
@@ -327,18 +220,6 @@ class UserModelController extends Controller
 
             $saveAddress = new User_Adress();
 
-<<<<<<< HEAD
-                $saveAddress->save();
-                $result[] = array(
-                    'user_id' => $user_id,
-                    'title' => $title,
-                    'lat' => $lat,
-                    'lng' => $lng,
-                    'address' => $address);
-                $message = array("Message" => "saved successfully", "data" => $result);
-                return response()->json($message, 201);
-                }
-=======
             $saveAddress->user_id = $user_id;
             $saveAddress->title = $title;
             $saveAddress->lat = $lat;
@@ -346,9 +227,14 @@ class UserModelController extends Controller
             $saveAddress->address = $address;
 
             $saveAddress->save();
->>>>>>> a4fdbb727e54588510065bf9bc542c38ebb2f5c0
+            $result[] = array(
+                'user_id' => $user_id,
+                'title' => $title,
+                'lat' => $lat,
+                'lng' => $lng,
+                'address' => $address);
 
-            $message = array("Message" => "saved successfully");
+            $message = array("Message" => "saved successfully", "data"=> $result);
             return response()->json($message, 201);
         }
     }
@@ -365,21 +251,6 @@ class UserModelController extends Controller
     public function update_savedAddress(Request $request, $id)
     {
 
-<<<<<<< HEAD
-            if($update_user_address){
-                $result[] = array(
-                    'id' => $id,
-                    'title' => $title,
-                    'lat' => $lat,
-                    'lng' => $lng,
-                    'address' => $address);
-                $json = array("status" => 200, "message"=>"Data has been updated", "data"=>$result);
-                return response()->json($json, 200);
-            }else{
-                $json = array("status" => 400, "message" => "Something went wrong");
-                return response()->json($json, 400);
-            }
-=======
         $title = $request->input('title');
         $lat = $request->input('lat');
         $lng = $request->input('lng');
@@ -394,12 +265,17 @@ class UserModelController extends Controller
         ]);
 
         if ($update_user_address) {
-            $json = array("status" => 200, "message" => "Data has been updated");
+            $result[] = array(
+                'id' => $id,
+                'title' => $title,
+                'lat' => $lat,
+                'lng' => $lng,
+                'address' => $address);
+            $json = array("status" => 200, "message" => "Data has been updated", "data"=> $result);
             return response()->json($json, 200);
         } else {
             $json = array("status" => 400, "message" => "Something went wrong");
             return response()->json($json, 400);
->>>>>>> a4fdbb727e54588510065bf9bc542c38ebb2f5c0
         }
     }
 
@@ -409,27 +285,16 @@ class UserModelController extends Controller
 
         $delete_address = User_Adress::where("id", $id)->delete();
 
-<<<<<<< HEAD
-            if( $delete_address){
-                $result[] = array('id'=>$id);
-                $json = array("status" => 200, "message"=>"Data has been deleted", "data"=>$result);
-                return response()->json($json, 200);
-            }else{
-                $json = array("status" => 400, "message" => "Something went wrong");
-                return response()->json($json, 400);
-            }
-=======
         if ($delete_address) {
-            $json = array("status" => 200, "message" => "Data has been deleted");
+            $result[] = array('id'=>$id);
+            $json = array("status" => 200, "message" => "Data has been deleted", "data"=> $result);
             return response()->json($json, 200);
         } else {
             $json = array("status" => 400, "message" => "Something went wrong");
             return response()->json($json, 400);
->>>>>>> a4fdbb727e54588510065bf9bc542c38ebb2f5c0
         }
     }
 
-<<<<<<< HEAD
         // get user driver trips
         public function get_driverTrips(Request $request)
         {
@@ -683,38 +548,16 @@ class UserModelController extends Controller
                  return response()->json($json, 201);
 			}
 
-=======
-    // get user driver trips
-    public function get_driverTrips(Request $request)
-    {
-        $user_id = $request->input('user_id');
-        $from_title = $request->input('from_title');
-        $to_title = $request->input('to_title');
-        $get_date = $request->input('get_date');
-        $seats = $request->input('seats');
-        $rating = $request->input('rating');
-        $price = $request->input('price');
-        $by_date = $request->input('by_date');
-
-        $ResultAddress = UserModel::getdriverTrips($from_title, $to_title, $get_date, $seats, $rating, $price);
-        if ($ResultAddress >= 1) {
-            foreach ($ResultAddress as $getValue) {
-                $driver_id = $getValue->driver_id;
-                $trip_id = $getValue->trip_id;
-
-                $bookedSeats = UserModel::check_availabeltrips($trip_id);
-            }
->>>>>>> a4fdbb727e54588510065bf9bc542c38ebb2f5c0
         }
 
         // NOT COMPLETE
-    }
+
 
     // get driver informations
-    public function get_singleTrip($id)
-    {
-        $resultGetsingletrip = UserModel::check_availabeltrips($id);
-    }
+    // public function get_singleTrip($id)
+    // {
+    //     $resultGetsingletrip = UserModel::check_availabeltrips($id);
+    // }
 
     //add review
     public function user_addReview(Request $request)
