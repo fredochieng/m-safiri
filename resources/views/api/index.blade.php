@@ -79,13 +79,13 @@
         <div id="body">
             <p>User Register API : </p>
             <p>
-                {{ $app_url }}addUser</p>
+                {{ $app_url }}/user/add</p>
             <p>
                 parameteres : user_email , password , device_id ,device_token
             </p>_____________
             <p>User Login API : </p>
             <p>
-                {{ $app_url }}loginUser</p>
+                {{ $app_url }}/user/login</p>
             <p>
                 parameteres : user_email , password
             </p>_____________
@@ -98,90 +98,90 @@
             </p>_____________
             <p>Getuser API : </p>
             <p>
-                {{ $app_url }}getUser</p>
+                {{ $app_url }}/user/{id}</p>
             <p>
                 parameteres : user_id
             </p>_____________
             <p>Update user profile API : </p>
             <p>
-                {{ $app_url }}updateProfile</p>
+                {{ $app_url }}/updateProfile/{id}</p>
             <p>
                 parameteres : user_id , photo , mobile_number ,gender ,fname ,lname ,country , user_email
             </p>_____________
             <p>User changepassword API : </p>
             <p>
-                {{ $app_url }}userChangepassword</p>
+                {{ $app_url }}/userChangepassword/{id}</p>
             <p>
                 parameteres : user_id , password , old_password
             </p>_____________
             <p>user reset password API : </p>
             <p>
-                {{ $app_url }}userResetpassword</p>
+                {{ $app_url }}/userResetpassword</p>
             <p>
                 parameteres : user_id , password
             </p>_____________
             <p>user email Sentcode API : </p>
             <p>
-                {{ $app_url }}userSentcode</p>
+                {{ $app_url }}/userSentcode</p>
             <p>
                 parameteres : user_email , sentcode
             </p>_____________
             <p>User My saved address API : </p>
             <p>
-                {{ $app_url }}myAddress</p>
+                {{ $app_url }}/myAddress</p>
             <p>
                 parameteres : user_id , title , lat , lng , address
             </p>_____________
             <p>Get My saved address API : </p>
             <p>
-                {{ $app_url }}getmyAddress</p>
+                {{ $app_url }}/getmyAddress/{id}</p>
             <p>
                 parameteres : user_id
             </p>_____________
             <p>Remove My saved address API : </p>
             <p>
-                {{ $app_url }}deletemyAddress</p>
+                {{ $app_url }}/deletemyAddress/{id}</p>
             <p>
                 parameteres : id
             </p>_____________
             <p>Update My saved address API : </p>
             <p>
-                {{ $app_url }}updatemyAddress</p>
+                {{ $app_url }}/updatemyAddress/{id}</p>
             <p>
                 parameteres : id , user_id , title , lat , lng , address
             </p>_____________
             <p>Get all driver trip location API : </p>
             <p>
-                {{ $app_url }}getdriverTrips</p>
+                {{ $app_url }}/getdriverTrips</p>
             <p>
                 parameteres : user_id, from_title, from_lat, from_lng, from_address, to_title, to_lat, to_lng,
                 to_address , rating[yes], price [high/low]</p>_____________
             <p>Get singleTrip location API : </p>
             <p>
-                {{ $app_url }}singleTrip</p>
+                {{ $app_url }}/singleTrip</p>
             <p>
                 parameteres : id, user_id
             </p>_____________
             <p>Get all trip - home screen API : </p>
             <p>
-                {{ $app_url }}allFromlist</p>
+                {{ $app_url }}/allFromlist</p>
             <p>
             </p>_____________
             <p>Get all trip from-to home screen API : </p>
             <p>
-                {{ $app_url }}allTolist</p>
+                {{ $app_url }}/allTolist</p>
             <p>
                 parameteres : from_titled
             </p>_____________
             <p>User join trip API : (Merge with confirm trip)</p>
             <p>
-                {{ $app_url }}joinTrip</p>
+                {{ $app_url }}/joinTrip</p>
             <p>
                 parameteres : trip_id , user_id , driver_id , status('0','confirm','cancel','booked','onboard','missed')
             </p>_____________
             <p>User add review API : </p>
             <p>
-                {{ $app_url }}addReview</p>
+                {{ $app_url }}/addReview</p>
             <p>
                 parameteres : trip_id , user_id , driver_id , rating , comments
             </p>_____________
