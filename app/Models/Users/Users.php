@@ -27,7 +27,7 @@ class Users extends Model
                ->select(
                    DB::raw('tb.*'),
                    DB::raw('tb.id as user_id'),
-                   DB::raw('CONCAT(lname, fname) AS full_name'),
+                   DB::raw('CONCAT(lname, fname) AS full_name')
                    )->where('id', $user_id)
                    ->first();
 
