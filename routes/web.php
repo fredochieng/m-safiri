@@ -52,6 +52,10 @@ Route::resource('/trips', 'TripController');
 //Routes for review
 Route::any('/reviews', 'ReviewController@index');
 
+//Routes for review
+Route::any('/users', 'UsersController@index');
+Route::any('/users/user/&id={id}', 'UsersController@userDetails');
+
 // Routes for reports
 Route::any('/reports/cancelled_reports', 'ReportsController@cancelledTrips');
 

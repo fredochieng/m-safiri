@@ -43,10 +43,10 @@ Route::get('driver/get_trip', 'ApiControllers\DriverController@getTrip');
 Route::post('driver/delete_trip', 'ApiControllers\DriverController@deleteTrip');
 Route::post('driver/update_driver_location', 'ApiControllers\DriverController@updateDriverLocation');
 
-Route::post('addUser', 'UserModelController@register');
-Route::post('loginUser', 'UserModelController@login');
-Route::get('getUser/{id}', 'UserModelController@getuser');
-Route::post('updateProfile/{id}', 'UserModelController@updateprofile');
+Route::post('user/add', 'UserModelController@register');
+Route::post('user/login', 'UserModelController@login');
+Route::get('user/{id}', 'UserModelController@getuser');
+Route::post('updateProfile/{id} ', 'UserModelController@updateprofile');
 Route::post('userSentcode', 'UserModelController@user_check_sentcode');
 Route::post('userChangepassword/{id}', 'UserModelController@user_changepassword');
 
@@ -55,3 +55,14 @@ Route::post('myAddress', 'UserModelController@savedAddress');
 Route::get('getmyAddress/{id}', 'UserModelController@getmyaddress');
 Route::patch('updatemyAddress/{id}', 'UserModelController@update_savedAddress');
 Route::delete('deletemyAddress/{id}', 'UserModelController@delete_myaddress');
+Route::delete('deletemyAddress/{id}', 'UserModelController@delete_myaddress');
+
+//user trips
+Route::get('getdriverTrips', 'UserModelController@get_driverTrips');
+Route::get('singleTrip/{id}', 'UserModelController@get_singleTrip');
+Route::get('allFromlist', 'UserModelController@get_allFromlist');
+Route::get('allTolist', 'UserModelController@get_allTolist');
+Route::get('joinTrip', 'UserModelController@user_joinTrip');
+
+
+Route::post('addReview', 'UserModelController@user_addReview');

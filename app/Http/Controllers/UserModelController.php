@@ -13,12 +13,15 @@ class UserModelController extends Controller
 
     public function register(Request $request)
     {
+<<<<<<< HEAD
+=======
         $method = $_SERVER['REQUEST_METHOD'];
         if ($method != 'POST') {
 
             $message = array("status" => 400, "message" => "Bad request");
             return response()->json($message, 200);
         } else {
+>>>>>>> a4fdbb727e54588510065bf9bc542c38ebb2f5c0
 
             $user_email = $request->input('user_email');
             $password = bcrypt($request->input('password'));
@@ -36,9 +39,15 @@ class UserModelController extends Controller
                 $user_image = 'no_profile';
             }
 
+<<<<<<< HEAD
+            $resultGetdata=UserModel::checkUserdata($user_email);
+            if(!empty($resultGetdata)){
+                $json = array("status" =>0, "message" => "Data already exist");
+=======
             $resultGetdata = UserModel::checkUserdata($user_email);
             if ($resultGetdata >= 1) {
                 $json = array("status" => 0, "message" => "Data already exist");
+>>>>>>> a4fdbb727e54588510065bf9bc542c38ebb2f5c0
                 return response()->json($json, 200);
             } else {
                 if ($user_email == "") {
@@ -58,17 +67,52 @@ class UserModelController extends Controller
 
 
                     $userModel->save();
+<<<<<<< HEAD
+                     $result[] = array(
+                         'user_email' => $user_email);
+                     $json = array("status" => 1, "message"=>"success", "data"=>$result);
+                     return response()->json($json, 200);
+                    }
+				}
+
+           return json_encode($json);
+=======
 
                     $json = array("status" => 1, "message" => "success");
                     return response()->json($json, 200);
                 }
             }
+>>>>>>> a4fdbb727e54588510065bf9bc542c38ebb2f5c0
         }
         return json_encode($json);
     }
 
     //Login
 
+<<<<<<< HEAD
+        public function login(Request $request)
+        {
+
+                $user_email = $request->input('user_email');
+                $password = md5($request->input('password'));
+
+                $user_login = UserModel::loginUserdata()->where('user_email', $user_email)
+                                ->where('password', '=', $password)
+                                ->where('status', '=', 'active');
+
+                if($user_login->count() >= 1){
+
+                    $result['user'] = $user_login;
+
+                    $json = array("status" =>200, "message" => "success", "data" => $result);
+                    return response()->json($json, 200);
+
+                }else{
+                    $json = array("status" => 0, "message" => "Wrong Username or password");
+                    return response()->json($json, 400);
+                }
+
+=======
     public function login(Request $request)
     {
         $method = $_SERVER['REQUEST_METHOD'];
@@ -90,6 +134,7 @@ class UserModelController extends Controller
                 $json = array("status" => 0, "message" => "Wrong Username or password");
                 return response()->json($json, 200);
             }
+>>>>>>> a4fdbb727e54588510065bf9bc542c38ebb2f5c0
         }
         return json_encode($json);
     }
@@ -143,6 +188,23 @@ class UserModelController extends Controller
     public function updateprofile(Request $request, $user_id)
     {
 
+<<<<<<< HEAD
+            if($update_user_details){
+                $result[] = array(
+                    'user_id'=>$user_id,
+                    'fname' => $fname,
+                    'lname' => $lname,
+                    'user_email'=>$user_email,
+                    'photo' => $user_image,
+                    'mobile_number' => $mobile_number,
+                   );
+                $json = array("status" => 201, "message"=>"Data has been updated", "data" => $result);
+                return response()->json($json, 200);
+            }else{
+                $json = array("status" => 0, "message" => "Something went wrong");
+                return response()->json($json, 200);
+            }
+=======
         $fname =  $request->input('fname');
         $lname =  $request->input('lname');
         $user_email =  $request->input('user_email');
@@ -160,6 +222,7 @@ class UserModelController extends Controller
         } else {
             $user_image = UserModel::where('id', $user_id)->first();
             $user_image = $user_image->photo;
+>>>>>>> a4fdbb727e54588510065bf9bc542c38ebb2f5c0
         }
 
         $update_user_details = UserModel::where("id", $user_id)->update([
@@ -183,6 +246,15 @@ class UserModelController extends Controller
         }
     }
 
+<<<<<<< HEAD
+        //change password
+        public function user_changepassword(Request $request, $id)
+        {
+            $old_password = md5($request->input('old_password'));
+            $password = md5($request->input('password'));
+
+            $checkUser=UserModel::userChangePass($id, $old_password);
+=======
     // sendcode
     public function user_check_sentcode(Request $request)
     {
@@ -201,6 +273,7 @@ class UserModelController extends Controller
             return response()->json($json, 200);
         }
     }
+>>>>>>> a4fdbb727e54588510065bf9bc542c38ebb2f5c0
 
     //change password
     public function user_changepassword(Request $request, $id)
@@ -210,11 +283,18 @@ class UserModelController extends Controller
 
         $checkUser = UserModel::userChangePass($id, $old_password);
 
+<<<<<<< HEAD
+                ]);
+                $result[] = array('user_id'=>$id,'password' => $password);
+                $json = array("status" => 201, "message"=>"success", "data" => $result);
+                return response()->json( $json);
+=======
         if ($checkUser >= 1) {
 
             $update_user_password = UserModel::where("id", $id)->update([
                 'password' =>  $password,
                 'old_password' =>  $old_password,
+>>>>>>> a4fdbb727e54588510065bf9bc542c38ebb2f5c0
 
             ]);
 
@@ -226,27 +306,6 @@ class UserModelController extends Controller
         }
     }
 
-    //     public function user_changepassword(Request $request, $id)
-    //    {
-    //     // $driver_id = $request->input('driver_id');
-    //     $old_password = $request->input('old_password');
-    //     $password = $request->input('password');
-
-    //     $user = UserModel::driverData()->where('id', $id)->first();
-    //     $current_password = $user->password;
-
-    //     if ($current_password != bcrypt($old_password)) {
-    //         $message = array("Message" => "Current passsword incorrect");
-    //         return response()->json($message, 400);
-    //     } else {
-    //         $change_password = UserModel::where("id", $driver_id)->update([
-    //             'password' => bcrypt($password)
-    //         ]);
-
-    //         $message = array("Message" => "Password changed successfully");
-    //         return response()->json($message, 400);
-    //     }
-    //   }
 
     // add my saved address
     public function savedAddress(Request $request)
@@ -268,6 +327,18 @@ class UserModelController extends Controller
 
             $saveAddress = new User_Adress();
 
+<<<<<<< HEAD
+                $saveAddress->save();
+                $result[] = array(
+                    'user_id' => $user_id,
+                    'title' => $title,
+                    'lat' => $lat,
+                    'lng' => $lng,
+                    'address' => $address);
+                $message = array("Message" => "saved successfully", "data" => $result);
+                return response()->json($message, 201);
+                }
+=======
             $saveAddress->user_id = $user_id;
             $saveAddress->title = $title;
             $saveAddress->lat = $lat;
@@ -275,6 +346,7 @@ class UserModelController extends Controller
             $saveAddress->address = $address;
 
             $saveAddress->save();
+>>>>>>> a4fdbb727e54588510065bf9bc542c38ebb2f5c0
 
             $message = array("Message" => "saved successfully");
             return response()->json($message, 201);
@@ -293,6 +365,21 @@ class UserModelController extends Controller
     public function update_savedAddress(Request $request, $id)
     {
 
+<<<<<<< HEAD
+            if($update_user_address){
+                $result[] = array(
+                    'id' => $id,
+                    'title' => $title,
+                    'lat' => $lat,
+                    'lng' => $lng,
+                    'address' => $address);
+                $json = array("status" => 200, "message"=>"Data has been updated", "data"=>$result);
+                return response()->json($json, 200);
+            }else{
+                $json = array("status" => 400, "message" => "Something went wrong");
+                return response()->json($json, 400);
+            }
+=======
         $title = $request->input('title');
         $lat = $request->input('lat');
         $lng = $request->input('lng');
@@ -312,6 +399,7 @@ class UserModelController extends Controller
         } else {
             $json = array("status" => 400, "message" => "Something went wrong");
             return response()->json($json, 400);
+>>>>>>> a4fdbb727e54588510065bf9bc542c38ebb2f5c0
         }
     }
 
@@ -321,15 +409,281 @@ class UserModelController extends Controller
 
         $delete_address = User_Adress::where("id", $id)->delete();
 
+<<<<<<< HEAD
+            if( $delete_address){
+                $result[] = array('id'=>$id);
+                $json = array("status" => 200, "message"=>"Data has been deleted", "data"=>$result);
+                return response()->json($json, 200);
+            }else{
+                $json = array("status" => 400, "message" => "Something went wrong");
+                return response()->json($json, 400);
+            }
+=======
         if ($delete_address) {
             $json = array("status" => 200, "message" => "Data has been deleted");
             return response()->json($json, 200);
         } else {
             $json = array("status" => 400, "message" => "Something went wrong");
             return response()->json($json, 400);
+>>>>>>> a4fdbb727e54588510065bf9bc542c38ebb2f5c0
         }
     }
 
+<<<<<<< HEAD
+        // get user driver trips
+        public function get_driverTrips(Request $request)
+        {
+            $user_id = $request->input('user_id');
+			$from_title = $request->input('from_title');
+			$to_title = $request->input('to_title');
+			$get_date = $request->input('get_date');
+			$seats = $request->input('seats');
+			$rating = $request->input('rating');
+			$price = $request->input('price');
+            $by_date = $request->input('by_date');
+
+            $ResultAddress = UserModel::getdriverTrips($from_title,$to_title,$get_date,$seats,$rating,$price);
+            if( $ResultAddress->count() >= 1){
+                foreach ($ResultAddress as $getValue) {
+                     $driver_id = $getValue->driver_id;
+                     $trip_id = $getValue->trip_id;
+
+                     $bookedSeats = UserModel::check_availabeltrips($trip_id);
+
+                     $totalSeats =  DriverModel::get_driver_vehicle($driver_id );
+                      $tSeats = $totalSeats->seats;
+
+                      $finalSeats = $tseats - $bookedSeats;
+
+                      if($finalSeats >= $seats){
+
+                        $resultGetrating= DriverModel::getdriverRating($driver_id);
+                     if($resultGetrating>=1){
+                        $datarating['result'] = $resultGetrating;
+                        $ratting = number_format((float)$resultGetrating->avg_rating, 2, '.', '');
+
+                    }
+                    else{
+                        $ratting = "0";
+                    }
+                    $result[] = array(
+                        'id'=>$getValue->id,
+                        'user_id'=>$user_id,
+                        'driver_id'=>$getValue->driver_id,
+                        'from_title'=>$getValue->from_title,
+                        'from_lat'=>$getValue->from_lat,
+                        'from_lng'=>$getValue->from_lng,
+                        'from_address'=>$getValue->from_address,
+                        'to_title'=>$getValue->to_title,
+                        'to_lat'=>$getValue->to_lat,
+                        'to_lng'=>$getValue->to_lng,
+                        'to_address'=>$getValue->to_address,
+                        'datetime'=>$getValue->datetime,
+                        'status'=>$getValue->status,
+                        'fullname'=>$getValue->fullname,
+                        'gender'=>$getValue->gender,
+                        'photo'=>$photoPath,
+                        'mobile_number'=>$getValue->mobile_number,
+                        'vehicle_number'=>$getValue->vehicle_number,
+                        'vehicle_name'=>$getValue->vehicle_name,
+                        'vehicle_type'=>$getValue->vehicle_type,
+                        'rating'=>$rating,
+                        'trip_price'=>$getValue->trip_price,
+                        'countBookedseats' =>$bookedSeats);
+
+		                 $json = array("status" => 1,"message"=>"success", "data" => $result);
+                         return response()->json($json, 200);
+
+                     }else{
+
+                        $json = array("status" => 0, "message" => "No data found");
+                        return response()->json($json, 400);
+                     }
+
+
+                }
+            }else{
+                $json = array("status" => 0, "message" => "Something went wrong");
+                return response()->json($json, 400);
+                }
+
+            // NOT COMPLETE
+        }
+
+       // get driver informations
+        public function get_singleTrip($id)
+        {
+            $getValue = UserModel::getsingleTrip($id);
+
+            $resultGettime= DriverModel::calculate_triptime($id);
+            $datatime['resultime'] = $resultGettime;
+
+            $calculate_time = $resultGettime;
+
+            if(!empty($getValue)){
+                $data['result'] = $getValue;
+
+                dd($getValue);
+
+                foreach ($data['result'] as $getValue) {
+                    $resultGetrating= DriverModel::getdriverRating( $getValue->driver_id);
+                    $diver_id = $getValue->driver_id;
+                    if(!empty($resultGetrating)){
+                        $datarating['result'] = $resultGetrating;
+                        $ratting = '2.0';//number_format((float)$resultGetrating->avg_rating, 2, '.', '');
+
+                    }
+                    else{
+                        $ratting = "0";
+                    }
+
+                    $result[] = array(
+                        'id'=>$id,
+                        'driver_id'=>$getValue->driver_id,
+                        'from_title'=>$getValue->from_title,
+                        'from_lat'=>$getValue->from_lat,
+                        'from_lng'=>$getValue->from_lng,
+                        'from_address'=>$getValue->from_address,
+                        'to_title'=>$getValue->to_title,
+                        'to_lat'=>$getValue->to_lat,
+                        'to_lng'=>$getValue->to_lng,
+                        'to_address'=>$getValue->to_address,
+                        'last_lat'=>$getValue->last_lat,
+                        'last_lng'=>$getValue->last_lng,
+                        'datetime'=>$getValue->datetime,
+                        'status'=>$getValue->status,
+                        'fullname'=>$getValue->fullname,
+                        'gender'=>$getValue->gender,
+                        //'photo'=>$photoPath,
+                        'mobile_number'=>$getValue->mobile_number,
+                        'vehicle_number'=>$getValue->vehicle_number,
+                        'vehicle_type'=>$getValue->vehicle_type,
+                        'vehicle_name'=>$getValue->vehicle_name,
+                        'calculate_time'=>$calculate_time,
+                        'trip_price'=>$getValue->trip_price,
+                        'ratting' =>$ratting,
+                        'user_ratting' => $getValue->user_ratting,
+                        'user_trip_status'=>$getValue->user_trip_status);
+
+                        $json = array("status" => 1,"message"=>"success", "data" => $result);
+                        return response()->json($json, 400);
+                    }
+
+
+            } else{
+                $json = array("status" => 0, "message" => "Something went wrong");
+                return response()->json($json, 400);
+          }
+        }
+
+        // get all trips - Home screen
+        public function get_allFromlist()
+        {
+            $resultGettrips= UserModel::getAllfromlist();
+            if($resultGettrips->count() >= 1){
+                $data['result'] = $resultGettrips;
+	            	foreach ($data['result'] as $getValue) {
+
+            		$result[] = array(
+
+                        'id' => $getValue->id,
+                        'driver_id' => $getValue->driver_id,
+                        'from_title'=>$getValue->from_title ,
+                        'from_lat'=>$getValue->from_lat ,
+                        'from_lng'=>$getValue->from_lng ,
+                        'from_address'=>$getValue->from_address ,
+                        'to_title'=>$getValue->to_title ,
+                        'to_lat'=>$getValue->to_lat ,
+                        'to_lng'=>$getValue->to_lng ,
+                        'to_address'=>$getValue->to_address ,
+                        'datetime'=>$getValue->datetime ,
+                        'end_datetime'=>$getValue->end_datetime ,
+                        'status'=>$getValue->status
+                        );
+
+
+                }
+                $json = array("status" => 1,"message"=>"success", "data" => $result);
+                return response()->json($json, 200);
+			}
+			else{
+                  $json = array("status" => 0, "message" => "Something went wrong");
+                  return response()->json($json, 400);
+			}
+        }
+
+
+        // get all trips - Home screen
+	    public function get_allTolist(Request $request){
+
+            $from_title = $request->input('from_title');
+            $resultGettrips= UserModel::getAlltolist($from_title);
+            if(!empty($resultGettrips)){
+            	$data['result'] = $resultGettrips;
+	            	foreach ($data['result'] as $getValue) {
+                        $result[] = array(
+
+                            'id' => $getValue->id,
+                            'driver_id' => $getValue->driver_id,
+                            'from_title'=>$getValue->from_title ,
+                            'from_lat'=>$getValue->from_lat ,
+                            'from_lng'=>$getValue->from_lng ,
+                            'from_address'=>$getValue->from_address ,
+                            'to_title'=>$getValue->to_title ,
+                            'to_lat'=>$getValue->to_lat ,
+                            'to_lng'=>$getValue->to_lng ,
+                            'to_address'=>$getValue->to_address ,
+                            'datetime'=>$getValue->datetime ,
+                            'end_datetime'=>$getValue->end_datetime ,
+                            'status'=>$getValue->status
+                            );
+                 }
+                 $json = array("status" => 1,"message"=>"success", "data" => $result);
+                 return response()->json($json, 200);
+			}
+			else{
+			  	$json = array("status" => 0, "message" => "Something went wrong");
+			}
+        }
+
+        // add user trips join
+        public function user_joinTrip(Request $request)
+        {
+            $status = $request->input('status');
+            $datetime = date("Y-m-d H:i:s");
+
+            $trip_id =$request->input('trip_id');
+            $user_id =$request->input('user_id');
+            $driver_id =$request->input('driver_id');
+
+            $data = array(
+                'trip_id' =>$trip_id,
+                'user_id' =>$user_id,
+                'driver_id' =>$driver_id,
+                'datetime' => $datetime,
+                'status' => $status
+            );
+            $resultGetdata=UserModel::check_jointrip($trip_id ,$user_id);
+            if(!empty($resultGetdata)){
+                $json = array("status" =>0, "message" => "Data already exist");
+                return response()->json($json, 401);
+			}
+			else{
+                $insertTrip = new UserReview();
+
+                UserReview::insert($data);
+
+                $result[] = array('id'=>$id,
+                'trip_id' => $trip_id,
+                'user_id' => $user_id,
+                'driver_id' => $driver_id,
+                'datetime' => $datetime
+                );
+                 $json = array("status" => 1, "message"=>"success", "data" => $result);
+                 return response()->json($json, 201);
+			}
+
+=======
     // get user driver trips
     public function get_driverTrips(Request $request)
     {
@@ -350,6 +704,7 @@ class UserModelController extends Controller
 
                 $bookedSeats = UserModel::check_availabeltrips($trip_id);
             }
+>>>>>>> a4fdbb727e54588510065bf9bc542c38ebb2f5c0
         }
 
         // NOT COMPLETE
