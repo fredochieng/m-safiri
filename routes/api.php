@@ -21,8 +21,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::apiResource('drivers', 'ApiControllers\DriverController');
 Route::post('driver/create', 'ApiControllers\DriverController@store');
 Route::post('driver/login', 'ApiControllers\DriverController@loginDriver');
-Route::get('drivers/{id}', 'ApiControllers\DriverController@show');
-Route::post('driver/{id}/update', 'ApiControllers\DriverController@update');
+Route::get('drivers/get_driver', 'ApiControllers\DriverController@show');
+Route::post('driver/update', 'ApiControllers\DriverController@update');
 Route::any('driver/approval', 'ApiControllers\DriverController@getDriverapproval');
 Route::any('driver/profile', 'ApiControllers\DriverController@getDriverprofile');
 Route::any('driver/update_photo', 'ApiControllers\DriverController@updateDriverPhoto');
@@ -55,6 +55,7 @@ Route::post('myAddress', 'UserModelController@savedAddress');
 Route::get('getmyAddress/{id}', 'UserModelController@getmyaddress');
 Route::patch('updatemyAddress/{id}', 'UserModelController@update_savedAddress');
 Route::delete('deletemyAddress/{id}', 'UserModelController@delete_myaddress');
+Route::delete('deletemyAddress/{id}', 'UserModelController@delete_myaddress');
 
 //user trips
 Route::get('getdriverTrips', 'UserModelController@get_driverTrips');
@@ -65,8 +66,3 @@ Route::get('joinTrip', 'UserModelController@user_joinTrip');
 
 
 Route::post('addReview', 'UserModelController@user_addReview');
-
-
-
-
-

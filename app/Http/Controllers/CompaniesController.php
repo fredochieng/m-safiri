@@ -49,7 +49,7 @@ class CompaniesController extends Controller
         $contact_name = $request->input('contact_name');
         $contact_email = $request->input('contact_email');
         $contact_number = $request->input('contact_number');
-        $password = '12345678';
+        $password = $contact_number;
 
         $company = new Company();
         $company->company_name = $company_name;

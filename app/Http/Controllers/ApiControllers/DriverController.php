@@ -62,9 +62,10 @@ class DriverController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
-        $driver = DriverModel::getDriverdata()->where('driver_id', $id);
+        $driver_id = $request->input('driver_id');
+        $driver = DriverModel::getDriverdata()->where('id', $driver_id)->first();
         return response()->json($driver, 200);
     }
 
@@ -138,9 +139,6 @@ class DriverController extends Controller
     {
         $user_email = $request->input('email');
         $password = $request->input('password');
-
-        //$login_data = array('email' => $user_email, 'password' => $password);
-        //DriverModel::loginDriver($login_data);
 
         $driver_login = DriverModel::loginDriver()->where('email', $user_email)
             ->where('password', '=', md5($password))
@@ -398,7 +396,6 @@ class DriverController extends Controller
 
     public function addBankDetails(Request $request)
     {
-
         $driver_id = $request->input('driver_id');
         $bank_id = $request->input('bank_id');
         $bank_payee = $request->input('bank_payee');
