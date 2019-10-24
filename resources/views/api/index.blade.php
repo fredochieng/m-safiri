@@ -268,36 +268,37 @@
         <div id="body">
             <p>Driver Register API : </p>
             <p>
-                {{ $app_url }}/api/driver/create</p>------Status:Done-------<p>
+                {{ $app_url }}/api/driver/create</p>
+            <p>
                 parameteres : type ('individual', 'company'),fullname ,email , password , device_id , device_token
             </p>_____________
             <p>Driver Login API : </p>
             <p>
-                {{ $app_url }}/api/driver/login</p>------Status:Done-------
+                {{ $app_url }}/api/driver/login</p>
             <p>
                 parameteres : email , password
             </p>_____________
             <p>Getdriver API : </p>
             <p>
-                {{ $app_url }}/api/drivers/get_driver</p>------Status:Done-------
+                {{ $app_url }}/api/drivers/get_driver</p>
             <p>
                 parameteres : driver_id
             </p>_____________
             <p>Approval status API : </p>
             <p>
-                {{ $app_url }}/api/driver/approval</p>------Status:Done-------
+                {{ $app_url }}/api/driver/approval</p>
             <p>
                 parameteres : email
             </p>_____________
             <p>Driver Profile API : </p>
             <p>
-                {{ $app_url }}/api/driver/profile</p>------Status:Done-------
+                {{ $app_url }}/api/driver/profile</p>
             <p>
                 parameteres : driver_id
             </p>_____________
             <p>Update driver API : </p>
             <p>
-                {{ $app_url }}/api/driver/update</p>------Status:Done-------
+                {{ $app_url }}/api/driver/update</p>
             <p>
                 parameteres : driver_id , gender ,dob ,country_id ,city_id ,postal_code ,mobile_number,licence_file,
                 address_file
@@ -305,69 +306,69 @@
             </p>_____________
             <p>driver photo API : </p>
             <p>
-                {{ $app_url }}/api/driver/update_photo</p>------Status:Done-------
+                {{ $app_url }}/api/driver/update_photo</p>
             <p>
                 parameteres : driver_id , photo
             </p>_____________
             <p>driver vehicle profile API : </p>
             <p>
-                {{ $app_url }}/api/driver/update_vehicle_profile</p>------Status:Done-------
+                {{ $app_url }}/api/driver/update_vehicle_profile</p>
             <p>
                 parameteres : driver_id , vehicle_profile
             </p>_____________
             <p>driver changepassword API : </p>
             <p>
-                {{ $app_url }}/api/driver/change_password</p>------Status:Done-------
+                {{ $app_url }}/api/driver/change_password</p>
             <p>
                 parameteres : driver_id , password, old_password
             </p>_____________
             <p>driver email Sentcode API : </p>
             <p>
-                {{ $app_url }}/api/driver/check_sent_code</p>------Status:Done-------
+                {{ $app_url }}/api/driver/check_sent_code</p>
             <p>
                 parameteres : email , sentcode
             </p>_____________
             <p>driver add vehicle API : </p>
             <p>
                 {{ $app_url }}/api/driver/add_vehicle</p>
-            ------Status:Done-------
+
             <p>
                 parameteres : driver_id ,vehicle_name, type_id , vehicle_number , seats , vehicle_picture ,
                 vehicle_document
             </p>_____________
             <p>driver add vehicle API : </p>
             <p>
-                {{ $app_url }}/api/driver/update_vehicle</p>------Status:Done-------
+                {{ $app_url }}/api/driver/update_vehicle</p>
             <p>
                 parameteres : driver_id
             </p>_____________
             <p>driver add bank detail API : </p>
             <p>
-                {{ $app_url }}/api/driver/add_bank_details</p>------Status:Done-------
+                {{ $app_url }}/api/driver/add_bank_details</p>
             <p>
                 parameteres :
                 driver_id,bank_id,bank_payee,bank_account,bank_ifsc
             </p>_____________
             <p>driver get bank detail API : </p>
             <p>
-                {{ $app_url }}/api/driver/get_bank_details</p>------Status:Done-------
+                {{ $app_url }}/api/driver/get_bank_details</p>
             <p>
                 parameteres : driver_id
             </p>_____________
             <p>driver update bank detail API : </p>
             <p>
-                {{ $app_url }}/api/driver/update_bank_details</p>------Status:Done-------
+                {{ $app_url }}/api/driver/update_bank_details</p>
             <p>
                 parameteres : driver_id
             </p>_____________
             <p>driver Set trip location API : </p>
             <p>
-                {{ $app_url }}/api/driver/add_trip</p>------Status:Done-------
+                {{ $app_url }}/api/driver/add_trip</p>
             <p>
                 parameteres : driver_id, from_title, from_lat, from_lng, from_address, to_title, to_lat, to_lng,
                 to_address , datetime [2018-11-01 10:39:53] ,end_datetime [2018-11-01 10:39:53]
             </p>_____________
-            <p>driver update trip location API : </p>
+            {{-- <p>driver update trip location API : </p>
             <p>
                 {{ $app_url }}updateDrivertrip</p>
             <p>
@@ -378,33 +379,33 @@
                 {{ $app_url }}updateDrivertrip</p>
             <p>
                 parameteres : id , status ['pending','active','deactive','ongoing','cancel'] ,trip_map_screenshot
-            </p>_____________
+            </p>_____________ --}}
             <p>driver delete trip location API : </p>
             <p>
-                {{ $app_url }}/api/driver/delete_trip</p>------Status:Done-------
+                {{ $app_url }}/api/driver/delete_trip</p>
             <p>
                 parameteres : trip_id
             </p>_____________
-            <p>Get all driver current / past /upcoming API : </p>
+            {{-- <p>Get all driver current / past /upcoming API : </p>
             <p>
                 {{ $app_url }}myDrivertrip</p>
             <p>
                 parameteres : driver_id, trip_type [current / past /upcoming / history] , sort_by (sort_time ,
                 sort_location)
-            </p>_____________
+            </p>_____________ --}}
             <p>Single driver trip API : </p>
             <p>
-                {{ $app_url }}/api/driver/get_trip</p>------Status:Done-------
+                {{ $app_url }}/api/driver/get_trip</p>
             <p>
                 parameteres : trip_id
             </p>_____________
             <p>Get vehicle data API : </p>
             <p>
-                {{ $app_url }}/api/get_vehicle</p>-----Status:Done-------
+                {{ $app_url }}/api/get_vehicle</p>
             <p>
                 parameteres : driver_id
             </p>_____________
-            <p>delete vehicle image API : </p>
+            {{-- <p>delete vehicle image API : </p>
             <p>
                 {{ $app_url }}deleteVehicleplate</p>-----Status:Done-------
             <p>
@@ -415,10 +416,10 @@
                 {{ $app_url }}tripUserlist</p>
             <p>
                 parameteres : trip_id , countBookedseats , countRemainingseats
-            </p>_____________
-            <p>Trip detail screen API : </p>
+            </p>_____________ --}}
+            {{-- <p>Trip detail screen API : </p>
             <p>
-                {{ $app_url }}tripDetails</p>------Status:Done-------
+                {{ $app_url }}tripDetails</p>
             <p>
                 parameteres : trip_id
             </p>_____________
@@ -428,39 +429,39 @@
             <p>
                 parameteres : driver_id
             </p>_____________
-            <p>Document screen API : </p>
-            <p>
+            <p>Document screen API : </p> --}}
+            {{-- <p>
                 {{ $app_url }}drvierDocument</p>
             <p>
                 parameteres : driver_id , driving_livence , address_proof , photo_type
-            </p>_____________
-            <p>delete driver Document API : </p>
+            </p>_____________ --}}
+            {{-- <p>delete driver Document API : </p>
             <p>
                 {{ $app_url }}deleteDocuments</p>
             <p>
                 parameteres : id
-            </p>_____________
-            <p>Get driver Document API : </p>
+            </p>_____________ --}}
+            {{-- <p>Get driver Document API : </p>
             <p>
                 {{ $app_url }}getDriverdocuments</p>
             <p>
                 parameteres : driver_id
-            </p>_____________
-            <p>Driver last location API : </p>
+            </p>_____________ --}}
+            {{-- <p>Driver last location API : </p>
             <p>{{ $app_url }}lastLocation</p>
             <p>parameteres : trip_id,last_lat , last_lng</p>
-            _____________
+            _____________ --}}
             <p>Country API : </p>
             <p>{{ $app_url }}/api/get_countries</p>
             _____________
             <p>City API : </p>
             <p>{{ $app_url }}/api/get_cities</p>
             <p>parameteres : country_id</p>
-            _____________
+            {{-- _____________
             <p>Onboard userlist API : </p>
             <p>{{ $app_url }}onboardUserlist</p>
-            <p>parameteres : trip_id , user_id [1,2,3,..]</p>
-            _____________
+            <p>parameteres : trip_id , user_id [1,2,3,..]</p> --}}
+            {{-- _____________
             <p>All status API : </p>
             <p>{{ $app_url }}allApprovelStatus</p>
             <p>parameteres : driver_id</p>
@@ -471,7 +472,7 @@
             <p>get Onboard user list API : </p>
             <p>{{ $app_url }}getOnboardlist</p>
             <p>parameteres : trip_id</p>
-            ____________
+            ____________ --}}
         </div>
     </div>
 </body>
