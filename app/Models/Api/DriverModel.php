@@ -115,7 +115,7 @@ class DriverModel extends Model
     {
         $seats = DB::table('vehicles')
             ->select(
-                DB::raw('vehicles.seats'),
+                DB::raw('vehicles.seats')
             )
             ->get();
 
@@ -125,27 +125,25 @@ class DriverModel extends Model
     public static function getdriverRating($driver_id)
     {
         $query = DB::table('tbl_user_trips as t')
-                ->select(
+            ->select(
 
-                    DB::raw('avg(t.rating) as avg_rating')
-                   )
-                ->where('driver_id', '=', $driver_id)
-                ->get();
+                DB::raw('avg(t.rating) as avg_rating')
+            )
+            ->where('driver_id', '=', $driver_id)
+            ->get();
 
         return $query;
-
     }
 
     public static function calculate_triptime($id)
     {
         $query = DB::table('tbl_driver_setlocation as t')
-                ->selectRaw(
-                   ' SEC_TO_TIME(SUM(UNIX_TIMESTAMP("t.end_datetime") - UNIX_TIMESTAMP("t.datetime")))'
-                   )
-                ->where('id', '=', $id)
-                ->get();
+            ->selectRaw(
+                ' SEC_TO_TIME(SUM(UNIX_TIMESTAMP("t.end_datetime") - UNIX_TIMESTAMP("t.datetime")))'
+            )
+            ->where('id', '=', $id)
+            ->get();
 
         return $query;
-
     }
 }
