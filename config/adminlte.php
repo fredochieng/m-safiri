@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'title' => 'Turyde',
+    'title' => 'TuRyde',
 
     'title_prefix' => '',
 
@@ -30,9 +30,9 @@ return [
     |
     */
 
-    'logo' => '<b></b> Turyde',
+    'logo' => '<b></b> TuRyde',
 
-    'logo_mini' => '<b>Turyde</b>',
+    'logo_mini' => '<b>TuRyde</b>',
 
     /*
     |--------------------------------------------------------------------------
