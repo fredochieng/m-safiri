@@ -255,7 +255,7 @@
             <p>parameteres : sentcode , id , type (driverdata , userdata)</p>
             _____________ --}}
             <p>User logout API- [GET]: </p>
-            <p>{{ $app_url }}userLogout</p>
+            {{ $app_url }}/api/userLogout</p>
             <p>parameteres : user_id , device_token
                 _____________
         </div>
