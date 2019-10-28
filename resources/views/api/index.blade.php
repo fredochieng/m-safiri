@@ -185,18 +185,18 @@
             <p>
                 parameteres : trip_id , user_id , driver_id , rating , comments
             </p>_____________
-            <p>User get review API : </p>
+            {{-- <p>User get review API : </p>
             <p>
                 {{ $app_url }}/api/getReview</p>
             <p>
                 parameteres : trip_id , user_id
-            </p>_____________
-            <p>User trip history API : </p>
+            </p>_____________ --}}
+            {{-- <p>User trip history API : </p>
             <p>
                 {{ $app_url }}/api/userTrips</p>
             <p>
                 parameteres : user_id
-            </p>_____________
+            </p>_____________ --}}
             {{-- <p>User trip confirm / book / cancel API : </p>
             <p>
                 {{ $app_url }}/api/confirmTrip</p>
@@ -240,7 +240,7 @@
             <p>
                 parameteres : user_id
             </p>_____________ --}}
-            <p>User first screen - OTP API [POST]: </p>
+            {{-- <p>User first screen - OTP API [POST]: </p>
             <p>http://itechgaints.com/M-Safiri/africastalking/example/regUserget.php</p>
             <p>parameteres : mobile_number , device_id , device_token</p>
             _____________
@@ -253,7 +253,7 @@
             <p>http://itechgaints.com/M-Safiri/Msafiri-AdminPanel/check-otp-userdata.php?sentcode=1234&id=1&type=xxxx
             </p>
             <p>parameteres : sentcode , id , type (driverdata , userdata)</p>
-            _____________
+            _____________ --}}
             <p>User logout API- [GET]: </p>
             <p>{{ $app_url }}userLogout</p>
             <p>parameteres : user_id , device_token
