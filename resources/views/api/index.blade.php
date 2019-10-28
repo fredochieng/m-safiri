@@ -89,13 +89,13 @@
             <p>
                 parameteres : user_email , password
             </p>_____________
-            <p>Social Login API : </p>
+            {{-- <p>Social Login API : </p>
             <p>
                 {{ $app_url }}/api/socialLogin</p>
             <p>
                 parameteres : login_type [fblogin / glogin] , user_email , fname , lname , device_id , device_token ,
                 token [gtoken / ftoken]
-            </p>_____________
+            </p>_____________ --}}
             <p>Getuser API : </p>
             <p>
                 {{ $app_url }}/api/user/{id}</p>
@@ -114,12 +114,12 @@
             <p>
                 parameteres : user_id , password , old_password
             </p>_____________
-            <p>user reset password API : </p>
+            {{-- <p>user reset password API : </p>
             <p>
                 {{ $app_url }}/api/userResetpassword</p>
             <p>
                 parameteres : user_id , password
-            </p>_____________
+            </p>_____________ --}}
             <p>user email Sentcode API : </p>
             <p>
                 {{ $app_url }}/api/userSentcode</p>
@@ -173,12 +173,12 @@
             <p>
                 parameteres : from_titled
             </p>_____________
-            <p>User join trip API : (Merge with confirm trip)</p>
+            {{-- <p>User join trip API : (Merge with confirm trip)</p>
             <p>
                 {{ $app_url }}/api/joinTrip</p>
             <p>
                 parameteres : trip_id , user_id , driver_id , status('0','confirm','cancel','booked','onboard','missed')
-            </p>_____________
+            </p>_____________ --}}
             <p>User add review API : </p>
             <p>
                 {{ $app_url }}/api/addReview</p>
@@ -197,49 +197,49 @@
             <p>
                 parameteres : user_id
             </p>_____________
-            <p>User trip confirm / book / cancel API : </p>
+            {{-- <p>User trip confirm / book / cancel API : </p>
             <p>
                 {{ $app_url }}/api/confirmTrip</p>
             <p>
                 parameteres : id,trip_id , user_id , trip_screenshot , cancel_reason ,status ['confirm', 'cancel',
                 'booked'] , passanger_name
-            </p>_____________
-            <p>User trip Passanger list API : </p>
+            </p>_____________ --}}
+            {{-- <p>User trip Passanger list API : </p>
             <p>
                 {{ $app_url }}/api/getPassanger</p>
             <p>
                 parameteres : book_id
-            </p>_____________
-            <p>Passanger cancel API : </p>
+            </p>_____________ --}}
+            {{-- <p>Passanger cancel API : </p>
             <p>
                 {{ $app_url }}/api/cancelPassanger</p>
             <p>
                 parameteres : passanger_id
-            </p>_____________
-            <p>User trip cancel API : </p>
+            </p>_____________ --}}
+            {{-- <p>User trip cancel API : </p>
             <p>
                 {{ $app_url }}/api/cancelTrip</p>
             <p>cancelTrip
                 parameteres : trip_id , user_id
-            </p>_____________
-            <p>Tell your Driver(Preferences) Api : </p>
+            </p>_____________ --}}
+            {{-- <p>Tell your Driver(Preferences) Api : </p>
             <p>
                 {{ $app_url }}/api/addPreferences</p>
             <p>
                 parameteres : driver_id , trip_id , user_id , music ,medical
-            </p>_____________
-            <p>get Preferences Api : </p>
+            </p>_____________ --}}
+            {{-- <p>get Preferences Api : </p>
             <p>
                 {{ $app_url }}/api/getPreferences</p>
             <p>
                 parameteres : trip_id , user_id
-            </p>_____________
-            <p>get user favorite trip list Api : </p>
+            </p>_____________ --}}
+            {{-- <p>get user favorite trip list Api : </p>
             <p>
                 {{ $app_url }}/api/tripFavoritelist</p>
             <p>
                 parameteres : user_id
-            </p>_____________
+            </p>_____________ --}}
             <p>User first screen - OTP API [POST]: </p>
             <p>http://itechgaints.com/M-Safiri/africastalking/example/regUserget.php</p>
             <p>parameteres : mobile_number , device_id , device_token</p>

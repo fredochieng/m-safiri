@@ -13,7 +13,7 @@ class UserModel extends Model
     // check register data already exist or not
     public static function checkUserdata($user_email)
     {
-        $userEmail = DB::table('tbl_userdata')->where('user_email', '=', $user_email)->get();
+        $userEmail = DB::table('tbl_userdata')->where('user_email', '=', $user_email)->first();
         $res = $userEmail->toArray();
         if ($userEmail->count() > 0) {
 
@@ -39,6 +39,7 @@ class UserModel extends Model
             return false;
         }
     }
+
 
     public static function getUserdata($user_id)
     {
@@ -170,4 +171,5 @@ class UserModel extends Model
 
     //     return $singleTrip;
     // }
+
 }

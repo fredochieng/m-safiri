@@ -66,3 +66,5 @@ Route::get('joinTrip', 'UserModelController@user_joinTrip');
 
 
 Route::post('addReview', 'UserModelController@user_addReview');
+
+Route::post('logout', 'UserModelController@user_logout');

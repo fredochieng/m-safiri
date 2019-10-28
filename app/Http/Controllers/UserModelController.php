@@ -7,6 +7,7 @@ use App\Models\Api\DriverModel;
 use App\Models\Api\User_Adress;
 use App\Models\Api\UserReview;
 use Illuminate\Http\Request;
+use DB;
 
 class UserModelController extends Controller
 {
@@ -60,7 +61,7 @@ class UserModelController extends Controller
                     $userModel->save();
                      $result[] = array(
                          'user_email' => $user_email);
-                     $json = array("status" => 1, "message"=>"success", "data"=>$result);
+                     $json = array("status" => 200, "message"=>"success", "data"=>$result);
                      return response()->json($json, 200);
                     }
 				}
@@ -95,6 +96,39 @@ class UserModelController extends Controller
                 }
 
         }
+
+    // public function SocialLogin(Request $request)
+	// {
+    //     $login_type = $request->input('login_type');
+    //     $user_email = $request->input('user_email');
+    //     $fname = $request->input('fname');
+    //     $lname = $request->input('lname');
+    //     $device_id = $request->input('device_id');
+    //     $device_token = $request->input('device_token');
+    //     $token =  $request->input('token');
+
+    //     $resultGetdata = UserModel::checkUserdata($user_email);
+    //     $result['data'] =  $resultGetdata;
+    //     $user_id = $result->id;
+
+    //     if ($resultGetdata >= 1) {
+
+    //         $data = array(
+    //             'login_type' => $login_type,
+    //             'device_id' => $device_id,
+    //             'device_token' => $device_token,
+    //             'token' => $token
+    //         );
+
+    //         $updateUser = UserModel::find($user_id)->update($data);
+
+
+    //         $json = array("status" => 0, "message" => "Data already exist");
+    //         return response()->json($json, 200);
+    //     } else {
+
+    //     }
+    // }
 
 
     // get user informations
@@ -694,4 +728,20 @@ class UserModelController extends Controller
     // passanger cancel trip
     public function passanger_canceltrip()
     { }
+
+    // logout api
+	// delete my saved address
+	public function user_logout(Request $request) {
+
+            $user_id = $request->input('user_id');
+			$device_token = $request->input('device_token');
+
+            $deviceToken = DB::table('tbl_user_devicedata')
+                         ->where([['user_id', '=', $user_id], ['device_token', '=', $device_token]])
+                         ->delete();
+
+			$result[] = array('user_id'=>$user_id,'device_token'=>$device_token);
+            $json = array("status" => 1, "message"=>"success delete.", "data" => $result);
+            return response()->json($json, 200);
+    }
 }
