@@ -139,6 +139,7 @@ return [
             'url'  => 'companies',
             'icon' => 'fas fa-fw fa-desktop',
             'icon_color' => 'fuchsia',
+            'can' => 'companies.manage'
         ],
         [
             'text' => 'Vehicles',
@@ -152,7 +153,7 @@ return [
             'url'  => 'routes',
             'icon'    => 'fas fa-fw fa-road',
             'icon_color' => '#f56954',
-            'can' => 'vehicles.manage'
+            'can' => 'routes.manage'
         ],
         [
             'text' => 'Locations',
