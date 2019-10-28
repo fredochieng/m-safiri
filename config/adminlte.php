@@ -133,13 +133,13 @@ return [
             'url'  => 'home',
             'icon' => 'fas fa-fw fa-home',
             'icon_color' => 'blue',
-            'can' => 'companies.manage'
         ],
         [
             'text' => 'Companies',
             'url'  => 'companies',
             'icon' => 'fas fa-fw fa-desktop',
             'icon_color' => 'fuchsia',
+            'can' => 'companies.manage'
         ],
         [
             'text' => 'Vehicles',
