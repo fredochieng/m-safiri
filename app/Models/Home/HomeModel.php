@@ -85,18 +85,22 @@ class HomeModel extends Model
         $latest_drivers = DB::table('tbl_driverdata')
             ->select(
                 DB::raw('tbl_driverdata.*'),
-                DB::raw('tbl_driverdata.id driver_id'),
                 DB::raw('tbl_driverdata.created_at driver_created_at'),
                 DB::raw('tbl_driverdetails.*'),
                 DB::raw('tbl_driverdetails.photo as driver_image'),
                 DB::raw('countries.id as country_id'),
                 DB::raw('countries.country'),
                 DB::raw('cities.id as city_id'),
-                DB::raw('cities.city')
+                DB::raw('cities.city'),
+                DB::raw('vehicles.driver_id'),
+                DB::raw('vehicles.vehicle_number'),
+                DB::raw('tbl_driverdetails.driver_id as tbl_driverdetails_driver_id'),
+                DB::raw('tbl_driverdata.id as driver_id')
             )
-            ->leftJoin('tbl_driverdetails', 'tbl_driverdata.id', '=', 'tbl_driverdetails.driver_id')
+            ->join('tbl_driverdetails', 'tbl_driverdetails.driver_id', '=', 'tbl_driverdata.id', 'left outer')
             ->leftJoin('countries', 'tbl_driverdetails.country_id', '=', 'countries.id')
             ->leftJoin('cities', 'tbl_driverdetails.city_id', '=', 'cities.id')
+            ->join('vehicles', 'vehicles.driver_id', '=', 'tbl_driverdata.id', 'left outer')
             ->where($compare_field, $compare_operator, $compare_value)
             ->orderBy('tbl_driverdata.id', 'desc')
             ->limit(10)
