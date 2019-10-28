@@ -31,6 +31,8 @@ class DriverModel extends Model
             ->leftJoin('cities', 'tbl_driverdetails.city_id', '=', 'cities.id')
             ->get();
 
+        // dd($drivers);
+
         return $drivers;
     }
 
@@ -85,14 +87,14 @@ class DriverModel extends Model
         return $vehicles;
     }
 
-    public static function getaAllCountries()
+    public static function getAllCountries()
     {
         $countries = DB::table('countries')
             ->select(
                 DB::raw('countries.id'),
                 DB::raw('countries.country')
             )
-            //->orderbBy('id', '=', 'asc')
+            // ->orderbBy('id', '=', 'asc')
             ->get();
 
         return $countries;
@@ -102,6 +104,7 @@ class DriverModel extends Model
     {
         $countries = DB::table('cities')
             ->select(
+                DB::raw('cities.country_id'),
                 DB::raw('cities.id'),
                 DB::raw('cities.city')
             )

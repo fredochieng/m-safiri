@@ -66,6 +66,7 @@ class DriverController extends Controller
     {
         $driver_id = $request->input('driver_id');
         $driver = DriverModel::getDriverdata()->where('id', $driver_id)->first();
+        dd($driver);
         return response()->json($driver, 200);
     }
 
@@ -144,11 +145,11 @@ class DriverController extends Controller
             ->where('password', '=', md5($password))
             ->where('status', '=', 'active');
 
-        if (!empty($driver_login)) {
-
+        if (count($driver_login) > 0) {
             return $driver_login;
         } else {
-            return false;
+            $message = array("Message" => "Email/passsword incorrect");
+            return response()->json($message, 400);
         }
     }
 
@@ -553,23 +554,10 @@ class DriverController extends Controller
 
     public function getCountries()
     {
-        $var = ':/api/';
-        echo env('APP_URL') . $var;
-        exit;
-        $countries = DriverModel::getaAllCountries();
-        // dd($countries);
-        if (!empty($countries)) {
-            //  $data['result'] = array();
-            // $count = array();
-            // foreach ($countries as $value) {
-            $data['result'] = $countries;
+        $countries = DriverModel::getAllCountries();
 
-            $result[] = array('country_id' => $countries->id, 'country' => $countries->country);
-            $json = array("status" => 1, "message" => "success", "data" => $result);
-            return response()->json($json);
-            //     $count[] = $value;
-            //     dd($count);
-            //}
+        if (count($countries) > 0) {
+            return response()->json($countries, 200);
         } else {
             $message = array("Message" => "Records not found");
             return response()->json($message, 400);
@@ -580,19 +568,9 @@ class DriverController extends Controller
     {
         $country_id = $request->input('country_id');
         $cities = DriverModel::getaAllCities()->where('country_id', $country_id);
-        // dd($cities);
-        if (!empty($cities)) {
-            //  $data['result'] = array();
-            // $count = array();
-            // foreach ($cities as $value) {
-            $data['result'] = $cities;
 
-            $result[] = array('city_id' => $cities->id, 'city' => $cities->country);
-            $json = array("status" => 1, "message" => "success", "data" => $result);
-            return response()->json($json);
-            //     $count[] = $value;
-            //     dd($count);
-            //}
+        if (count($cities) > 0) {
+            return response()->json($cities, 200);
         } else {
             $message = array("Message" => "Records not found");
             return response()->json($message, 400);

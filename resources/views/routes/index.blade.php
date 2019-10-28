@@ -16,8 +16,6 @@
             </button>
         </div>
     </div>
-
-
     <div class="box-body">
         <div class="table-responsive">
             <table id="records" class="table table-hover">
