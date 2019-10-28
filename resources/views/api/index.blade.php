@@ -171,7 +171,7 @@
             <p>
                 {{ $app_url }}/api/allTolist</p>
             <p>
-                parameteres : from_titled
+                parameteres : from_title
             </p>_____________
             {{-- <p>User join trip API : (Merge with confirm trip)</p>
             <p>
