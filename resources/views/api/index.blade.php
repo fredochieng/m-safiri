@@ -340,7 +340,8 @@
             <p>
                 {{ $app_url }}/api/driver/update_vehicle</p>
             <p>
-                parameteres : driver_id
+                parameteres : driver_id ,vehicle_name, type_id , vehicle_number , seats , vehicle_picture ,
+                vehicle_document
             </p>_____________
             <p>driver add bank detail API : </p>
             <p>
@@ -401,7 +402,7 @@
             </p>_____________
             <p>Get vehicle data API : </p>
             <p>
-                {{ $app_url }}/api/get_vehicle</p>
+                {{ $app_url }}/api/driver/get_vehicle</p>
             <p>
                 parameteres : driver_id
             </p>_____________
