@@ -174,16 +174,22 @@ class DriverController extends Controller
         $driver_id = $request->input('driver_id');
         $driver = DriverModel::checkDriverProfile()->where('driver_id', $driver_id)->first();
 
-        $data['result'] = $driver;
-        $result[] = array(
-            'driver_id' => $driver->driver_id, 'gender' => $driver->gender, 'dob' => $driver->dob, 'street' => $driver->street,
-            'city' => $driver->city, 'state' => $driver->state, 'postal_code' => $driver->postal_code, 'country' => $driver->country,
-            'country_id' => $driver->country_id, 'mobile_number' => $driver->mobile_number, 'photo' => $driver->photo,
-            'vehicle_profile' => $driver->vehicle_profile
-        );
-        $json = array("status" => 1, "message" => "success", "data" => $result);
+        if (count($driver) > 0) {
 
-        return response()->json($json, 200);
+            $data['result'] = $driver;
+            $result[] = array(
+                'driver_id' => $driver->driver_id, 'gender' => $driver->gender, 'dob' => $driver->dob, 'street' => $driver->street,
+                'city' => $driver->city, 'state' => $driver->state, 'postal_code' => $driver->postal_code, 'country' => $driver->country,
+                'country_id' => $driver->country_id, 'mobile_number' => $driver->mobile_number, 'photo' => $driver->photo,
+                'vehicle_profile' => $driver->vehicle_profile
+            );
+            $json = array("status" => 1, "message" => "success", "data" => $result);
+
+            return response()->json($json, 200);
+        } else {
+            $message = array("Message" => "No driver found");
+            return response()->json($message, 400);
+        }
     }
 
     public function updateDriverPhoto(Request $request)
