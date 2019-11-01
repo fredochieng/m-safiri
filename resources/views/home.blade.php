@@ -13,7 +13,7 @@
         <!-- small box -->
         <div class="small-box bg-yellow">
             <div class="inner">
-                <h3>{{ $total_drivers }}</h3>
+                <h3>{{ $total_users }}</h3>
 
                 <p>Total Users</p>
             </div>

@@ -706,6 +706,21 @@ class DriverController extends Controller
         }
     }
 
+    public function driverLogout(Request $request)
+    {
+
+        $driver_id = $request->input('user_id');
+        $device_token = $request->input('device_token');
+
+        $deviceToken = DB::table('tbl_driverdata')
+            ->where([['id', '=', $driver_id], ['device_token', '=', $device_token]])
+            ->delete();
+
+        $result[] = array('driver_id' => $driver_id, 'device_token' => $device_token);
+        $json = array("status" => 1, "message" => "success delete.", "data" => $result);
+        return response()->json($json, 200);
+    }
+
     /**
      * Remove the specified resource from storage.
      *

@@ -27,10 +27,12 @@ class UserModelController extends Controller
             $device_id = $request->input('device_id');
             $device_token = $request->input('device_token');
 
+            $str = rand();
+            $random = md5($str);
             // Get file attachments form the form
             if ($request->hasFile('photo') && $request->file('photo')->isValid()) {
                 $file = $request->file('photo');
-                $file_name = $phone_no .  '_' . $file->getClientOriginalExtension();
+                $file_name = $random .  '_' . $file->getClientOriginalExtension();
                 $file->move('uploads/driver_images', $file_name);
                 $user_image = 'uploads/user_images/' . $file_name;
             } else {
@@ -59,46 +61,42 @@ class UserModelController extends Controller
 
 
                     $userModel->save();
-                     $result[] = array(
-                         'user_email' => $user_email);
-                     $json = array("status" => 200, "message"=>"success", "data"=>$result);
-                     return response()->json($json, 200);
-                    }
-				}
-
-
+                    $result[] = array(
+                        'user_email' => $user_email
+                    );
+                    $json = array("status" => 200, "message" => "success", "data" => $result);
+                    return response()->json($json, 200);
+                }
+            }
         }
-
     }
 
     //Login
 
-        public function login(Request $request)
-        {
+    public function login(Request $request)
+    {
 
-                $user_email = $request->input('user_email');
-                $password = md5($request->input('password'));
+        $user_email = $request->input('user_email');
+        $password = md5($request->input('password'));
 
-                $user_login = UserModel::loginUserdata()->where('user_email', $user_email)
-                                ->where('password', '=', $password)
-                                ->where('status', '=', 'active');
+        $user_login = UserModel::loginUserdata()->where('user_email', $user_email)
+            ->where('password', '=', $password)
+            ->where('status', '=', 'active');
 
-                if($user_login->count() >= 1){
+        if ($user_login->count() >= 1) {
 
-                    $result['user'] = $user_login;
+            $result['user'] = $user_login;
 
-                    $json = array("status" =>200, "message" => "success", "data" => $result);
-                    return response()->json($json, 200);
-
-                }else{
-                    $json = array("status" => 0, "message" => "Wrong Username or password");
-                    return response()->json($json, 400);
-                }
-
+            $json = array("status" => 200, "message" => "success", "data" => $result);
+            return response()->json($json, 200);
+        } else {
+            $json = array("status" => 0, "message" => "Wrong Username or password");
+            return response()->json($json, 400);
         }
+    }
 
     // public function SocialLogin(Request $request)
-	// {
+    // {
     //     $login_type = $request->input('login_type');
     //     $user_email = $request->input('user_email');
     //     $fname = $request->input('fname');
@@ -143,7 +141,6 @@ class UserModelController extends Controller
             $json = array("status" => 0, "message" => "user with that id does not exist");
             return response()->json($json, 200);
         }
-
     }
 
     // update user profile
@@ -158,10 +155,12 @@ class UserModelController extends Controller
         $country =  $request->input('country');
         $device_token =  $request->input('device_token');
 
+        $str = rand();
+        $random = md5($str);
         // Get file attachments form the form
         if ($request->hasFile('photo') && $request->file('photo')->isValid()) {
             $file = $request->file('photo');
-            $file_name = $phone_no .  '_' . $file->getClientOriginalExtension();
+            $file_name = $random .  '_' . $file->getClientOriginalExtension();
             $file->move('uploads/driver_images', $file_name);
             $photo = 'uploads/driver_images/' . $file_name;
         } else {
@@ -266,9 +265,10 @@ class UserModelController extends Controller
                 'title' => $title,
                 'lat' => $lat,
                 'lng' => $lng,
-                'address' => $address);
+                'address' => $address
+            );
 
-            $message = array("Message" => "saved successfully", "data"=> $result);
+            $message = array("Message" => "saved successfully", "data" => $result);
             return response()->json($message, 201);
         }
     }
@@ -304,8 +304,9 @@ class UserModelController extends Controller
                 'title' => $title,
                 'lat' => $lat,
                 'lng' => $lng,
-                'address' => $address);
-            $json = array("status" => 200, "message" => "Data has been updated", "data"=> $result);
+                'address' => $address
+            );
+            $json = array("status" => 200, "message" => "Data has been updated", "data" => $result);
             return response()->json($json, 200);
         } else {
             $json = array("status" => 400, "message" => "Something went wrong");
@@ -320,8 +321,8 @@ class UserModelController extends Controller
         $delete_address = User_Adress::where("id", $id)->delete();
 
         if ($delete_address) {
-            $result[] = array('id'=>$id);
-            $json = array("status" => 200, "message" => "Data has been deleted", "data"=> $result);
+            $result[] = array('id' => $id);
+            $json = array("status" => 200, "message" => "Data has been deleted", "data" => $result);
             return response()->json($json, 200);
         } else {
             $json = array("status" => 400, "message" => "Something went wrong");
@@ -329,262 +330,252 @@ class UserModelController extends Controller
         }
     }
 
-        // get user driver trips
-        public function get_driverTrips(Request $request)
-        {
-            $user_id = $request->input('user_id');
-			$from_title = $request->input('from_title');
-			$to_title = $request->input('to_title');
-			$get_date = $request->input('get_date');
-			$seats = $request->input('seats');
-			$rating = $request->input('rating');
-			$price = $request->input('price');
-            $by_date = $request->input('by_date');
+    // get user driver trips
+    public function get_driverTrips(Request $request)
+    {
+        $user_id = $request->input('user_id');
+        $from_title = $request->input('from_title');
+        $to_title = $request->input('to_title');
+        $get_date = $request->input('get_date');
+        $seats = $request->input('seats');
+        $rating = $request->input('rating');
+        $price = $request->input('price');
+        $by_date = $request->input('by_date');
 
-            $ResultAddress = UserModel::getdriverTrips($from_title,$to_title,$get_date,$seats,$rating,$price);
-            if( $ResultAddress->count() >= 1){
-                foreach ($ResultAddress as $getValue) {
-                     $driver_id = $getValue->driver_id;
-                     $trip_id = $getValue->trip_id;
+        $ResultAddress = UserModel::getdriverTrips($from_title, $to_title, $get_date, $seats, $rating, $price);
+        if ($ResultAddress->count() >= 1) {
+            foreach ($ResultAddress as $getValue) {
+                $driver_id = $getValue->driver_id;
+                $trip_id = $getValue->trip_id;
 
-                     $bookedSeats = UserModel::check_availabeltrips($trip_id);
+                $bookedSeats = UserModel::check_availabeltrips($trip_id);
 
-                     $totalSeats =  DriverModel::get_driver_vehicle($driver_id );
-                      $tSeats = $totalSeats->seats;
+                $totalSeats =  DriverModel::get_driver_vehicle($driver_id);
+                $tSeats = $totalSeats->seats;
 
-                      $finalSeats = $tseats - $bookedSeats;
+                $finalSeats = $tseats - $bookedSeats;
 
-                      if($finalSeats >= $seats){
+                if ($finalSeats >= $seats) {
 
-                        $resultGetrating= DriverModel::getdriverRating($driver_id);
-                     if($resultGetrating>=1){
+                    $resultGetrating = DriverModel::getdriverRating($driver_id);
+                    if ($resultGetrating >= 1) {
                         $datarating['result'] = $resultGetrating;
-                        $ratting = number_format((float)$resultGetrating->avg_rating, 2, '.', '');
-
-                    }
-                    else{
+                        $ratting = number_format((float) $resultGetrating->avg_rating, 2, '.', '');
+                    } else {
                         $ratting = "0";
                     }
                     $result[] = array(
-                        'id'=>$getValue->id,
-                        'user_id'=>$user_id,
-                        'driver_id'=>$getValue->driver_id,
-                        'from_title'=>$getValue->from_title,
-                        'from_lat'=>$getValue->from_lat,
-                        'from_lng'=>$getValue->from_lng,
-                        'from_address'=>$getValue->from_address,
-                        'to_title'=>$getValue->to_title,
-                        'to_lat'=>$getValue->to_lat,
-                        'to_lng'=>$getValue->to_lng,
-                        'to_address'=>$getValue->to_address,
-                        'datetime'=>$getValue->datetime,
-                        'status'=>$getValue->status,
-                        'fullname'=>$getValue->fullname,
-                        'gender'=>$getValue->gender,
-                        'photo'=>$photoPath,
-                        'mobile_number'=>$getValue->mobile_number,
-                        'vehicle_number'=>$getValue->vehicle_number,
-                        'vehicle_name'=>$getValue->vehicle_name,
-                        'vehicle_type'=>$getValue->vehicle_type,
-                        'rating'=>$rating,
-                        'trip_price'=>$getValue->trip_price,
-                        'countBookedseats' =>$bookedSeats);
-
-		                 $json = array("status" => 1,"message"=>"success", "data" => $result);
-                         return response()->json($json, 200);
-
-                     }else{
-
-                        $json = array("status" => 0, "message" => "No data found");
-                        return response()->json($json, 400);
-                     }
-
-
-                }
-            }else{
-                $json = array("status" => 0, "message" => "Something went wrong");
-                return response()->json($json, 400);
-                }
-
-            // NOT COMPLETE
-        }
-
-       // get driver informations
-        public function get_singleTrip($id)
-        {
-            $getValue = UserModel::getsingleTrip($id);
-
-            $resultGettime= DriverModel::calculate_triptime($id);
-            $datatime['resultime'] = $resultGettime;
-
-            $calculate_time = $resultGettime;
-
-            if(!empty($getValue)){
-                $data['result'] = $getValue;
-
-                dd($getValue);
-
-                foreach ($data['result'] as $getValue) {
-                    $resultGetrating= DriverModel::getdriverRating( $getValue->driver_id);
-                    $diver_id = $getValue->driver_id;
-                    if(!empty($resultGetrating)){
-                        $datarating['result'] = $resultGetrating;
-                        $ratting = '2.0';//number_format((float)$resultGetrating->avg_rating, 2, '.', '');
-
-                    }
-                    else{
-                        $ratting = "0";
-                    }
-
-                    $result[] = array(
-                        'id'=>$id,
-                        'driver_id'=>$getValue->driver_id,
-                        'from_title'=>$getValue->from_title,
-                        'from_lat'=>$getValue->from_lat,
-                        'from_lng'=>$getValue->from_lng,
-                        'from_address'=>$getValue->from_address,
-                        'to_title'=>$getValue->to_title,
-                        'to_lat'=>$getValue->to_lat,
-                        'to_lng'=>$getValue->to_lng,
-                        'to_address'=>$getValue->to_address,
-                        'last_lat'=>$getValue->last_lat,
-                        'last_lng'=>$getValue->last_lng,
-                        'datetime'=>$getValue->datetime,
-                        'status'=>$getValue->status,
-                        'fullname'=>$getValue->fullname,
-                        'gender'=>$getValue->gender,
-                        //'photo'=>$photoPath,
-                        'mobile_number'=>$getValue->mobile_number,
-                        'vehicle_number'=>$getValue->vehicle_number,
-                        'vehicle_type'=>$getValue->vehicle_type,
-                        'vehicle_name'=>$getValue->vehicle_name,
-                        'calculate_time'=>$calculate_time,
-                        'trip_price'=>$getValue->trip_price,
-                        'ratting' =>$ratting,
-                        'user_ratting' => $getValue->user_ratting,
-                        'user_trip_status'=>$getValue->user_trip_status);
-
-                        $json = array("status" => 1,"message"=>"success", "data" => $result);
-                        return response()->json($json, 400);
-                    }
-
-
-            } else{
-                $json = array("status" => 0, "message" => "Something went wrong");
-                return response()->json($json, 400);
-          }
-        }
-
-        // get all trips - Home screen
-        public function get_allFromlist()
-        {
-            $resultGettrips= UserModel::getAllfromlist();
-            if($resultGettrips->count() >= 1){
-                $data['result'] = $resultGettrips;
-	            	foreach ($data['result'] as $getValue) {
-
-            		$result[] = array(
-
                         'id' => $getValue->id,
+                        'user_id' => $user_id,
                         'driver_id' => $getValue->driver_id,
-                        'from_title'=>$getValue->from_title ,
-                        'from_lat'=>$getValue->from_lat ,
-                        'from_lng'=>$getValue->from_lng ,
-                        'from_address'=>$getValue->from_address ,
-                        'to_title'=>$getValue->to_title ,
-                        'to_lat'=>$getValue->to_lat ,
-                        'to_lng'=>$getValue->to_lng ,
-                        'to_address'=>$getValue->to_address ,
-                        'datetime'=>$getValue->datetime ,
-                        'end_datetime'=>$getValue->end_datetime ,
-                        'status'=>$getValue->status
-                        );
+                        'from_title' => $getValue->from_title,
+                        'from_lat' => $getValue->from_lat,
+                        'from_lng' => $getValue->from_lng,
+                        'from_address' => $getValue->from_address,
+                        'to_title' => $getValue->to_title,
+                        'to_lat' => $getValue->to_lat,
+                        'to_lng' => $getValue->to_lng,
+                        'to_address' => $getValue->to_address,
+                        'datetime' => $getValue->datetime,
+                        'status' => $getValue->status,
+                        'fullname' => $getValue->fullname,
+                        'gender' => $getValue->gender,
+                        'photo' => $photoPath,
+                        'mobile_number' => $getValue->mobile_number,
+                        'vehicle_number' => $getValue->vehicle_number,
+                        'vehicle_name' => $getValue->vehicle_name,
+                        'vehicle_type' => $getValue->vehicle_type,
+                        'rating' => $rating,
+                        'trip_price' => $getValue->trip_price,
+                        'countBookedseats' => $bookedSeats
+                    );
 
+                    $json = array("status" => 1, "message" => "success", "data" => $result);
+                    return response()->json($json, 200);
+                } else {
 
+                    $json = array("status" => 0, "message" => "No data found");
+                    return response()->json($json, 400);
                 }
-                $json = array("status" => 1,"message"=>"success", "data" => $result);
-                return response()->json($json, 200);
-			}
-			else{
-                  $json = array("status" => 0, "message" => "Something went wrong");
-                  return response()->json($json, 400);
-			}
+            }
+        } else {
+            $json = array("status" => 0, "message" => "Something went wrong");
+            return response()->json($json, 400);
         }
 
+        // NOT COMPLETE
+    }
 
-        // get all trips - Home screen
-	    public function get_allTolist(Request $request){
+    // get driver informations
+    public function get_singleTrip($id)
+    {
+        $getValue = UserModel::getsingleTrip($id);
 
-            $from_title = $request->input('from_title');
-            $resultGettrips= UserModel::getAlltolist($from_title);
-            if(!empty($resultGettrips)){
-            	$data['result'] = $resultGettrips;
-	            	foreach ($data['result'] as $getValue) {
-                        $result[] = array(
+        $resultGettime = DriverModel::calculate_triptime($id);
+        $datatime['resultime'] = $resultGettime;
 
-                            'id' => $getValue->id,
-                            'driver_id' => $getValue->driver_id,
-                            'from_title'=>$getValue->from_title ,
-                            'from_lat'=>$getValue->from_lat ,
-                            'from_lng'=>$getValue->from_lng ,
-                            'from_address'=>$getValue->from_address ,
-                            'to_title'=>$getValue->to_title ,
-                            'to_lat'=>$getValue->to_lat ,
-                            'to_lng'=>$getValue->to_lng ,
-                            'to_address'=>$getValue->to_address ,
-                            'datetime'=>$getValue->datetime ,
-                            'end_datetime'=>$getValue->end_datetime ,
-                            'status'=>$getValue->status
-                            );
-                 }
-                 $json = array("status" => 1,"message"=>"success", "data" => $result);
-                 return response()->json($json, 200);
-			}
-			else{
-			  	$json = array("status" => 0, "message" => "Something went wrong");
-			}
+        $calculate_time = $resultGettime;
+
+        if (!empty($getValue)) {
+            $data['result'] = $getValue;
+
+            dd($getValue);
+
+            foreach ($data['result'] as $getValue) {
+                $resultGetrating = DriverModel::getdriverRating($getValue->driver_id);
+                $diver_id = $getValue->driver_id;
+                if (!empty($resultGetrating)) {
+                    $datarating['result'] = $resultGetrating;
+                    $ratting = '2.0'; //number_format((float)$resultGetrating->avg_rating, 2, '.', '');
+
+                } else {
+                    $ratting = "0";
+                }
+
+                $result[] = array(
+                    'id' => $id,
+                    'driver_id' => $getValue->driver_id,
+                    'from_title' => $getValue->from_title,
+                    'from_lat' => $getValue->from_lat,
+                    'from_lng' => $getValue->from_lng,
+                    'from_address' => $getValue->from_address,
+                    'to_title' => $getValue->to_title,
+                    'to_lat' => $getValue->to_lat,
+                    'to_lng' => $getValue->to_lng,
+                    'to_address' => $getValue->to_address,
+                    'last_lat' => $getValue->last_lat,
+                    'last_lng' => $getValue->last_lng,
+                    'datetime' => $getValue->datetime,
+                    'status' => $getValue->status,
+                    'fullname' => $getValue->fullname,
+                    'gender' => $getValue->gender,
+                    //'photo'=>$photoPath,
+                    'mobile_number' => $getValue->mobile_number,
+                    'vehicle_number' => $getValue->vehicle_number,
+                    'vehicle_type' => $getValue->vehicle_type,
+                    'vehicle_name' => $getValue->vehicle_name,
+                    'calculate_time' => $calculate_time,
+                    'trip_price' => $getValue->trip_price,
+                    'ratting' => $ratting,
+                    'user_ratting' => $getValue->user_ratting,
+                    'user_trip_status' => $getValue->user_trip_status
+                );
+
+                $json = array("status" => 1, "message" => "success", "data" => $result);
+                return response()->json($json, 400);
+            }
+        } else {
+            $json = array("status" => 0, "message" => "Something went wrong");
+            return response()->json($json, 400);
         }
+    }
 
-        // add user trips join
-        public function user_joinTrip(Request $request)
-        {
-            $status = $request->input('status');
-            $datetime = date("Y-m-d H:i:s");
+    // get all trips - Home screen
+    public function get_allFromlist()
+    {
+        $resultGettrips = UserModel::getAllfromlist();
+        if ($resultGettrips->count() >= 1) {
+            $data['result'] = $resultGettrips;
+            foreach ($data['result'] as $getValue) {
 
-            $trip_id =$request->input('trip_id');
-            $user_id =$request->input('user_id');
-            $driver_id =$request->input('driver_id');
+                $result[] = array(
 
-            $data = array(
-                'trip_id' =>$trip_id,
-                'user_id' =>$user_id,
-                'driver_id' =>$driver_id,
-                'datetime' => $datetime,
-                'status' => $status
-            );
-            $resultGetdata=UserModel::check_jointrip($trip_id ,$user_id);
-            if(!empty($resultGetdata)){
-                $json = array("status" =>0, "message" => "Data already exist");
-                return response()->json($json, 401);
-			}
-			else{
-                $insertTrip = new UserReview();
+                    'id' => $getValue->id,
+                    'driver_id' => $getValue->driver_id,
+                    'from_title' => $getValue->from_title,
+                    'from_lat' => $getValue->from_lat,
+                    'from_lng' => $getValue->from_lng,
+                    'from_address' => $getValue->from_address,
+                    'to_title' => $getValue->to_title,
+                    'to_lat' => $getValue->to_lat,
+                    'to_lng' => $getValue->to_lng,
+                    'to_address' => $getValue->to_address,
+                    'datetime' => $getValue->datetime,
+                    'end_datetime' => $getValue->end_datetime,
+                    'status' => $getValue->status
+                );
+            }
+            $json = array("status" => 1, "message" => "success", "data" => $result);
+            return response()->json($json, 200);
+        } else {
+            $json = array("status" => 0, "message" => "Something went wrong");
+            return response()->json($json, 400);
+        }
+    }
 
-                UserReview::insert($data);
 
-                $result[] = array('id'=>$id,
+    // get all trips - Home screen
+    public function get_allTolist(Request $request)
+    {
+
+        $from_title = $request->input('from_title');
+        $resultGettrips = UserModel::getAlltolist($from_title);
+        if (!empty($resultGettrips)) {
+            $data['result'] = $resultGettrips;
+            foreach ($data['result'] as $getValue) {
+                $result[] = array(
+
+                    'id' => $getValue->id,
+                    'driver_id' => $getValue->driver_id,
+                    'from_title' => $getValue->from_title,
+                    'from_lat' => $getValue->from_lat,
+                    'from_lng' => $getValue->from_lng,
+                    'from_address' => $getValue->from_address,
+                    'to_title' => $getValue->to_title,
+                    'to_lat' => $getValue->to_lat,
+                    'to_lng' => $getValue->to_lng,
+                    'to_address' => $getValue->to_address,
+                    'datetime' => $getValue->datetime,
+                    'end_datetime' => $getValue->end_datetime,
+                    'status' => $getValue->status
+                );
+            }
+            $json = array("status" => 1, "message" => "success", "data" => $result);
+            return response()->json($json, 200);
+        } else {
+            $json = array("status" => 0, "message" => "Something went wrong");
+        }
+    }
+
+    // add user trips join
+    public function user_joinTrip(Request $request)
+    {
+        $status = $request->input('status');
+        $datetime = date("Y-m-d H:i:s");
+
+        $trip_id = $request->input('trip_id');
+        $user_id = $request->input('user_id');
+        $driver_id = $request->input('driver_id');
+
+        $data = array(
+            'trip_id' => $trip_id,
+            'user_id' => $user_id,
+            'driver_id' => $driver_id,
+            'datetime' => $datetime,
+            'status' => $status
+        );
+        $resultGetdata = UserModel::check_jointrip($trip_id, $user_id);
+        if (!empty($resultGetdata)) {
+            $json = array("status" => 0, "message" => "Data already exist");
+            return response()->json($json, 401);
+        } else {
+            $insertTrip = new UserReview();
+
+            UserReview::insert($data);
+
+            $result[] = array(
+                'id' => $id,
                 'trip_id' => $trip_id,
                 'user_id' => $user_id,
                 'driver_id' => $driver_id,
                 'datetime' => $datetime
-                );
-                 $json = array("status" => 1, "message"=>"success", "data" => $result);
-                 return response()->json($json, 201);
-			}
-
+            );
+            $json = array("status" => 1, "message" => "success", "data" => $result);
+            return response()->json($json, 201);
         }
+    }
 
-        // NOT COMPLETE
+    // NOT COMPLETE
 
 
     // get driver informations
@@ -653,7 +644,7 @@ class UserModelController extends Controller
         }
     }
 
-    public function user_getReview()
+    public function user_getReview(Request $request)
     {
         $user_id = $request->input('user_id');
         $trip_id = $request->input('trip_id');
@@ -662,7 +653,7 @@ class UserModelController extends Controller
         return responce()->json($resultGetcancelled, 200);
     }
 
-    public function user_Preferences()
+    public function user_Preferences(Request $request)
     {
         $driver_id = $request->input('driver_id');
         $user_id = $request->input('user_id');
@@ -730,18 +721,19 @@ class UserModelController extends Controller
     { }
 
     // logout api
-	// delete my saved address
-	public function user_logout(Request $request) {
+    // delete my saved address
+    public function user_logout(Request $request)
+    {
 
-            $user_id = $request->input('user_id');
-			$device_token = $request->input('device_token');
+        $user_id = $request->input('user_id');
+        $device_token = $request->input('device_token');
 
-            $deviceToken = DB::table('tbl_user_devicedata')
-                         ->where([['user_id', '=', $user_id], ['device_token', '=', $device_token]])
-                         ->delete();
+        $deviceToken = DB::table('tbl_user_devicedata')
+            ->where([['user_id', '=', $user_id], ['device_token', '=', $device_token]])
+            ->delete();
 
-			$result[] = array('user_id'=>$user_id,'device_token'=>$device_token);
-            $json = array("status" => 1, "message"=>"success delete.", "data" => $result);
-            return response()->json($json, 200);
+        $result[] = array('user_id' => $user_id, 'device_token' => $device_token);
+        $json = array("status" => 1, "message" => "success delete.", "data" => $result);
+        return response()->json($json, 200);
     }
 }

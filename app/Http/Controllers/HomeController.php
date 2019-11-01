@@ -26,6 +26,7 @@ class HomeController extends Controller
     public function index()
     {
         $data['total_drivers'] = HomeModel::getTotalDrivers();
+        $data['total_users'] = HomeModel::getTotalUsers();
         $data['total_vehicles'] = HomeModel::getTotalVehicles();
         $data['total_companies'] = HomeModel::getTotalCompanies();
         $data['assigned_drivers'] = HomeModel::getAssignedDrivers();

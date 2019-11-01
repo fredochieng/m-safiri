@@ -4,6 +4,7 @@ namespace App\Models\Home;
 
 use App\Models\Companies\Company;
 use App\Models\Drivers\DriverData;
+use App\Models\Users\Users;
 use App\Models\Vehicles\Vehicle;
 use Illuminate\Support\Facades\Auth;
 use DB;
@@ -18,6 +19,12 @@ class HomeModel extends Model
     {
         $total_drivers = DriverData::getDrivers()->count();
         return $total_drivers;
+    }
+
+    public static function getTotalUsers()
+    {
+        $total_users = Users::getUsers()->count();
+        return $total_users;
     }
 
     public static function getTotalMechanics()

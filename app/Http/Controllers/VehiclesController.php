@@ -106,7 +106,6 @@ class VehiclesController extends Controller
         // Get the selected vehicle, vehicle id passed
         $data['vehicles'] = Vehicle::getVehicles()->where('vehicle_id', $vehicle_id)->first();
 
-        //dd($data['vehicles']);
         // Get vehicle types
         $data['vehicle_types'] = VehicleType::getVehicleTypes();
 
