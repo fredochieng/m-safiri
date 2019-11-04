@@ -48,7 +48,6 @@ class DriverData extends Model
             ->where($compare_field, $compare_operator, $compare_value)
             ->get();
 
-
         return $drivers;
     }
 
